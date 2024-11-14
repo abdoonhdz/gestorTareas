@@ -1,0 +1,18 @@
+<div class="task-list mt-2 mb-2">
+  <div class="search-bar col-12">
+    <input [formControl]="searchControl" class="col-8" (input)="onSearch($event)" placeholder="Buscar por título, asignado o prioridad">
+    <div class="category-filter col-2">
+      <select [formControl]="categoryControl" placeholder="Filtrar por categoría">
+        <option value="Todas">Todas</option>
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+    </div>
+    <button class="col-2" (click)="clearFilters()">Limpiar Filtros</button>
+  </div>
+
+  <div class="d-flex">
+    <div *ngFor="let status of taskStatuses; trackBy: trackStatus">
+      <task-column [tasks]="filteredTasks" [status]="status"></task-column>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<h1 mat-dialog-title *ngIf="action === 'view'">Detalles de la tarea</h1>
+<h1 mat-dialog-title *ngIf="action === 'delete'">¿Seguro que quieres eliminarla?</h1>
+
+<div mat-dialog-content>
+  <div *ngIf="action === 'view'">
+    <p class="medium"><span class="text-primary-card">Título:</span> {{ data.task.title | titlecase }}</p>
+    <p class="medium"><span class="text-primary-card">Estado:</span> {{ data.task.status | titlecase }}</p>
+    <p class="medium"><span class="text-primary-card">Prioridad:</span> {{ data.task.priority | titlecase }}</p>
+    <p class="medium"><span class="text-primary-card">Asignado a:</span> {{ data.task.assignedTo | titlecase }}</p>
+    <p class="medium"><span class="text-primary-card">Tiempo estimado:</span> {{ data.task.estimatedTime }}h</p>
+    <p class="medium"><span class="text-primary-card">Categoría:</span> {{ data.task.category | titlecase }}</p>
+    <p class="medium"><span class="text-primary-card">Descripción:</span> {{ data.task.description }}</p>
+  </div>
+
+  <div *ngIf="action === 'delete'">
+    <p class="medium"><span class="text-primary-card">Identificador:</span> {{ data.task.id }}</p>
+    <p class="medium"><span class="text-primary-card">Título:</span> {{ data.task.title | titlecase }}</p>
+    <p class="medium"><span class="text-primary-card">Estado:</span> {{ data.task.status | titlecase }}</p>
+    <p class="medium"><span class="text-primary-card">Prioridad:</span> {{ data.task.priority | titlecase }}</p>
+    <p class="medium"><span class="text-primary-card">Asignado a:</span> {{ data.task.assignedTo | titlecase }}</p>
+    <p class="medium"><span class="text-primary-card">Tiempo estimado:</span> {{ data.task.estimatedTime }}h</p>
+    <p class="medium"><span class="text-primary-card">Categoría:</span> {{ data.task.category | titlecase }}</p>
+    <p class="medium"><span class="text-primary-card">Descripción:</span> {{ data.task.description }}</p>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button *ngIf="action === 'view'" (click)="closeDialog()">Aceptar</button>
+  <button mat-button color="warn" *ngIf="action === 'view'" (click)="editAction()">Editar</button>
+  <button mat-button *ngIf="action === 'delete'" (click)="confirmAction()">Sí, eliminar</button>
+  <button mat-button color="warn" *ngIf="action === 'delete'" (click)="closeDialog()">Cancelar</button>
+</div>

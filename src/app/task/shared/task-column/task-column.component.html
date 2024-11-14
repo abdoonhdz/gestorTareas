@@ -1,0 +1,8 @@
+<div class="task-column">
+  <h4 class="mb-4 title">{{ status | titlecase }}</h4>
+    @for (task of tasks; track task.id) {
+      @if (task.status === status) {
+        <task-card [task]="task" (taskDeleted)="handleTaskDeleted($event)"></task-card>
+      }
+    }
+</div>

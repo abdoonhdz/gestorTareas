@@ -1,0 +1,13 @@
+.text-primary-card {
+  color: #09CDDD;
+  font-size: 18px !important;
+}
+
+.medium {
+  font-size: 16px;
+}
+
+.snackbar-success {
+  background-color: #09CDDD;
+  color: white;
+}

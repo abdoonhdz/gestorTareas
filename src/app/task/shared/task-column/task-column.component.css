@@ -1,0 +1,20 @@
+.task-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 375px;
+  max-width: 450px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-left: 20px;
+  min-height: 80vh;
+  height: auto;
+}
+
+.title {
+  color: #1E1E1E;
+  font-weight: 500;
+}

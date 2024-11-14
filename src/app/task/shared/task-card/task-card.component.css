@@ -1,0 +1,108 @@
+.hidden {
+  display: none;
+}
+
+.task-card {
+  width: 325px;
+  min-height: 185px;
+  height: auto;
+  margin-bottom: 30px;
+  background-color: rgba(255, 255, 255, 0.874);
+  color: black;
+}
+
+
+#container-buttons {
+  gap: 10px;
+}
+
+.small {
+  font-size: 14px;
+}
+
+.text-primary-card {
+  color: #008686;
+}
+
+.text-secondary-card {
+  color: #806d62;
+}
+
+.text-tests {
+  color: #865300;
+}
+
+.text-completed {
+  color: #500e5c;
+}
+
+.text-white {
+  color: white;
+}
+
+.text-black {
+  color: black;
+  font-style: italic;
+  margin-top: 0;
+}
+
+.in-progress {
+  filter: drop-shadow(0 0 0.2rem #008686);}
+
+.pending {
+  filter: drop-shadow(0 0 0.2rem #806d62);
+}
+
+.tests {
+  filter: drop-shadow(0 0 0.2rem #865300);
+}
+
+.completed {
+  filter: drop-shadow(0 0 0.2rem #500e5c);
+}
+
+.btn-pending {
+  color: #008686 !important;
+}
+
+.btn-in-progress {
+  color: #806d62 !important;
+}
+
+.btn-tests {
+  color: #865300 !important;
+}
+
+.btn-completed {
+  color: #500e5c !important;
+}
+
+.btn-delete {
+  transition: 0.3s ease-in-out;
+}
+
+.btn-delete:hover {
+  color: rgb(130, 0, 0) !important;
+  background-color: rgba(130, 0, 0, 0.108) !important;
+}
+
+.task-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.mat-card-title {
+  align-self: flex-start;
+}
+
+.mat-card-subtitle {
+  margin-top: 0;
+}
+
+
+.mat-mt {
+  margin-top: 1rem;
+}
+

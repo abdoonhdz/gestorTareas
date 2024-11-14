@@ -1,0 +1,70 @@
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+
+  @if (taskId) {
+    <h3 class="text-primary-card">Tarea: #{{ taskId }}</h3>
+  }
+
+  <mat-form-field appearance="fill">
+    <mat-label>Título</mat-label>
+    <input matInput formControlName="title">
+    <mat-error *ngIf="taskForm.get('title')?.hasError('required')" class="text-error">El título es obligatorio</mat-error>
+    <mat-error *ngIf="taskForm.get('title')?.hasError('minlength')" class="text-error">Debe tener al menos 6 caracteres</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Asignado a</mat-label>
+    <input matInput formControlName="assignedTo">
+    <mat-error *ngIf="taskForm.get('assignedTo')?.hasError('required')" class="text-error">Asignado a es obligatorio</mat-error>
+    <mat-error *ngIf="taskForm.get('assignedTo')?.hasError('minlength')" class="text-error">Debe tener al menos 3 caracteres</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Prioridad</mat-label>
+    <mat-select formControlName="priority">
+      <mat-option value="baja">Baja</mat-option>
+      <mat-option value="media">Media</mat-option>
+      <mat-option value="alta">Alta</mat-option>
+    </mat-select>
+    <mat-error *ngIf="taskForm.get('priority')?.hasError('required')" class="text-error">La prioridad es obligatoria</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Categoría</mat-label>
+    <input matInput formControlName="category">
+    <mat-error *ngIf="taskForm.get('category')?.hasError('required')" class="text-error">La categoría es obligatoria</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Estado</mat-label>
+    <mat-select formControlName="status">
+      <mat-option value="pendiente">Pendiente</mat-option>
+      <mat-option value="en progreso">En Progreso</mat-option>
+      <mat-option value="en pruebas">En Pruebas</mat-option>
+      <mat-option value="completada">Completada</mat-option>
+    </mat-select>
+    <mat-error *ngIf="taskForm.get('status')?.hasError('required')" class="text-error">El estado es obligatorio</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Tiempo Estimado</mat-label>
+    <input matInput formControlName="estimatedTime" placeholder="hh:mm">
+    <mat-error *ngIf="taskForm.get('estimatedTime')?.hasError('required')" class="text-error">El tiempo estimado es obligatorio</mat-error>
+    <mat-error *ngIf="taskForm.get('estimatedTime')?.hasError('pattern')" class="text-error">Formato incorrecto (ej: 02:30)</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Descripción</mat-label>
+    <input matInput formControlName="description">
+    <mat-error *ngIf="taskForm.get('description')?.hasError('required')" class="text-error">La descripción es obligatoria</mat-error>
+    <mat-error *ngIf="taskForm.get('description')?.hasError('minlength')" class="text-error">Debe tener al menos 20 caracteres</mat-error>
+  </mat-form-field>
+
+  <div class="row d-flex justify-content-center">
+    <button mat-button type="submit" [disabled]="taskForm.invalid" class="mt-2 col-6">
+      {{ taskId ? 'Actualizar' : 'Crear' }}
+    </button>
+    <button mat-button (click)="goBackButton()" class="mt-2 ms-3 col-6 btn-cancel">
+      Cancelar
+    </button>
+  </div>
+</form>

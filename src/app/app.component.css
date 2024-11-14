@@ -1,0 +1,19 @@
+.fondo-blanco {
+  background-color: rgba(245, 245, 245, 0.581) !important;
+}
+
+mat-sidenav-container {
+  height: 100vh;
+  overflow: hidden;
+}
+
+side-menu {
+  flex: 0 0 auto;
+}
+
+.content-container {
+  flex: 1;
+  overflow-y: auto;
+  height: 94%;
+}
+

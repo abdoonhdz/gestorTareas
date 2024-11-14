@@ -1,0 +1,71 @@
+<mat-card class="task-card" [ngClass]="[task.status === 'en progreso' ? 'in-progress' : '',
+                                        task.status === 'pendiente' ? 'pending' : '',
+                                        task.status === 'en pruebas' ? 'tests' : '',
+                                        task.status === 'completada' ? 'completed' : '',
+                                        ]">
+  <mat-card-content>
+    <div class="task-info-row d-flex">
+      <mat-card-title [ngClass]="[task.status === 'en progreso' ? 'text-primary-card' : '',
+                                  task.status === 'pendiente' ? 'text-secondary-card' : '',
+                                  task.status === 'en pruebas' ? 'text-tests' : '',
+                                  task.status === 'completada' ? 'text-completed' : '',
+                                  ]">
+        {{ task.title | titlecase }}
+      </mat-card-title>
+      <mat-card-subtitle class="text-black">
+        {{ task.category | titlecase }}
+      </mat-card-subtitle>
+    </div>
+  </mat-card-content>
+
+  <mat-card-content class="mat-mt">
+    <div class="task-info-row">
+      <p>Estado:
+        <span class="small" [ngClass]="[task.status === 'en progreso' ? 'text-primary-card' : '',
+                                        task.status === 'pendiente' ? 'text-secondary-card' : '',
+                                        task.status === 'en pruebas' ? 'text-tests' : '',
+                                        task.status === 'completada' ? 'text-completed' : '',
+                                        ]">
+          {{ task.status | titlecase }}
+        </span>
+      </p>
+      <p *ngIf="task.estimatedTime" [ngClass]="[task.status === 'en progreso' ? 'text-primary-card' : '',
+                                                task.status === 'pendiente' ? 'text-secondary-card' : '',
+                                                task.status === 'en pruebas' ? 'text-tests' : '',
+                                                task.status === 'completada' ? 'text-completed' : '',
+                                                ]">
+        {{ task.estimatedTime }}h
+      </p>
+    </div>
+    <div class="task-info-row">
+      <p>{{ task.assignedTo | titlecase }}</p>
+      <p> {{ task.priority | uppercase }}</p>
+    </div>
+  </mat-card-content>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-actions id="container-buttons" class="task-info-row">
+    <button mat-button
+            (click)="showTaskDetails(task)"
+            [ngClass]="[task.status === 'en progreso' ? 'btn-pending' : '',
+                        task.status === 'pendiente' ? 'btn-in-progress' : '',
+                        task.status === 'en pruebas' ? 'btn-tests' : '',
+                        task.status === 'completada' ? 'btn-completed' : '',
+                        ]">
+      <mat-icon>visibility</mat-icon>
+      Ver Detalles
+    </button>
+    <button mat-button
+            class="btn-delete"
+            (click)="deleteTask(task.id, task)"
+            [ngClass]="[task.status === 'en progreso' ? 'btn-pending' : '',
+                        task.status === 'pendiente' ? 'btn-in-progress' : '',
+                        task.status === 'en pruebas' ? 'btn-tests' : '',
+                        task.status === 'completada' ? 'btn-completed' : '',
+                        ]">
+      <mat-icon>delete</mat-icon>
+      Eliminar
+    </button>
+  </mat-card-actions>
+</mat-card>

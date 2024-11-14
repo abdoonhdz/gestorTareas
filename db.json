@@ -1,0 +1,84 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Tarea 1",
+      "assignedTo": "Test1",
+      "priority": "alta",
+      "category": "Gestión",
+      "status": "completada",
+      "estimatedTime": "02:00",
+      "description": "Descripción de la tarea 1."
+    },
+    {
+      "id": "3",
+      "title": "Tarea en pruebas 1",
+      "assignedTo": "Juan",
+      "priority": "alta",
+      "category": "Desarrollo",
+      "status": "en pruebas",
+      "estimatedTime": "03:00",
+      "description": "Descripción de la tarea en pruebas 1."
+    },
+    {
+      "id": "5",
+      "title": "Tarea modificada v2",
+      "assignedTo": "Pedro",
+      "priority": "media",
+      "category": "Urgente",
+      "status": "en progreso",
+      "estimatedTime": "02:00",
+      "description": "Descripción de la tarea actualizada."
+    },
+    {
+      "title": "Prueba descripcion",
+      "assignedTo": "Abdon",
+      "priority": "baja",
+      "category": "Pruebas",
+      "status": "en pruebas",
+      "estimatedTime": "01:00",
+      "description": "Esta tarea ha sido creada para comprobar la descripción.",
+      "id": "7"
+    },
+    {
+      "id": "8",
+      "title": "Verificar registros",
+      "assignedTo": "Anónimo",
+      "priority": "media",
+      "category": "Soporte",
+      "status": "completada",
+      "estimatedTime": "02:00",
+      "description": "Descripción de la tarea verificar registros."
+    },
+    {
+      "title": "En progreso 1",
+      "assignedTo": "Abdón",
+      "priority": "media",
+      "category": "Desarrollo",
+      "status": "pendiente",
+      "estimatedTime": "01:00",
+      "description": "Tarea realizada para comprobar el estado en progreso.",
+      "id": "1ed5"
+    },
+    {
+      "title": "Prueba actualizada",
+      "assignedTo": "Abdón",
+      "priority": "media",
+      "category": "Pruebas",
+      "status": "en pruebas",
+      "estimatedTime": "09:00",
+      "description": "Esta tarea ha sido creada para comprobar el correcto funcionamiento de los botones del alert",
+      "id": "08b5"
+    },
+    {
+      "title": "Ejemplo 2",
+      "assignedTo": "Abdón",
+      "priority": "baja",
+      "category": "Ejemplos",
+      "status": "en progreso",
+      "estimatedTime": "06:00",
+      "description": "Esta tarea ha sido creada para comprobar una funcionalidad. OK",
+      "id": "d4e1"
+    }
+  ]
+}

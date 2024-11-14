@@ -1,0 +1,22 @@
+<mat-sidenav mode="side" [opened]="true" class="sidenav">
+  <mat-toolbar>
+    <span>Menú</span>
+  </mat-toolbar>
+
+  <mat-nav-list>
+    <mat-list-item [routerLink]="['/tasks']" routerLinkActive="active">
+      <mat-icon matListItemIcon>list</mat-icon>
+      <span>Lista de Tareas</span>
+    </mat-list-item>
+
+    <mat-list-item [routerLink]="['/tasks/new']" routerLinkActive="active">
+      <mat-icon matListItemIcon>add</mat-icon>
+      <span>Crear Nueva Tarea</span>
+    </mat-list-item>
+  </mat-nav-list>
+</mat-sidenav>
+
+<mat-toolbar>
+  <span class="spacer"></span>
+  <span>Gestor de tareas</span>
+</mat-toolbar>

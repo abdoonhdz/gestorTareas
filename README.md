@@ -1,27 +1,70 @@
-# GestorTareas
+# Gestor de Tareas
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.11.
+## Descripción
 
-## Development server
+Esta es una aplicación de gestión de tareas creada con **Angular 18** y **Angular Material**. Permite crear, editar y eliminar tareas, así como visualizar el estado de cada tarea (Pendiente, En Progreso, En pruebas, Completada). La API se simula utilizando **json-server** para simular el backend.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Características
 
-## Build
+- **Visualización de tareas**: Listado de tareas con su estado y detalles.
+- **Edición de tareas**: Permite modificar los detalles de las tareas existentes.
+- **Creación de tareas**: Formulario para agregar nuevas tareas.
+- **Interfaz atractiva**: Uso de Angular Material para una UI moderna.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Requisitos previos
 
-## Running end-to-end tests
+Antes de comenzar, asegúrate de tener instaladas las siguientes herramientas en tu entorno de desarrollo:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- **Node.js**: [Descargar e instalar Node.js](https://nodejs.org/)
+- **npm**: Node Package Manager, que se instala automáticamente con Node.js.
 
-## Further help
+Para comprobar si tienes `node` y `npm` instalados, puedes ejecutar los siguientes comandos en tu terminal:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+node -v
+npm -v
+```
+
+- La versión de **node.js** deben de ser superior a la **18.13.0** para ser compatible con Angular 18.
+
+
+## Clonación del proyecto
+
+1. Clona el repositorio en tu máquina local.
+2. Accede al directorio del proyecto.
+
+
+## Instalación
+
+Una vez clonado el repositorio, necesitas instalar las dependencias necesarias utilizando npm. Para ello, ejecuta el siguiente comando dentro del directorio del proyecto:
+
+```
+npm install
+```
+
+Esto instalará todas las dependencias definidas en el archivo `package.json`.
+
+
+## Ejecución del proyecto
+
+Para ejecutar el proyecto:
+
+1. Inicia json-server para el backend:
+
+```
+npm run json-server
+```
+
+2. En una nueva terminal, inicia la aplicación Angular:
+
+```
+npm start
+```
+
+La aplicación estará disponible en `http://localhost:4200`.
+
+

@@ -1,0 +1,52 @@
+.task-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 250px);
+  margin-left: 250px;
+  height: 90vh;
+  box-sizing: border-box;
+}
+
+.task-form {
+  width: 100%;
+  max-width: 70%;
+  height: 775px;
+  padding: 40px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+button {
+  width: 150px;
+  padding: 10px;
+  background-color: #008686;
+  color: white !important;
+  align-self: center;
+}
+
+button:disabled {
+  background-color: #939393;
+  color: #cfcfcf !important;
+}
+
+.btn-cancel {
+  background-color: #ff6d5d;
+}
+
+.text-error {
+ color: #ff6d5d;
+ font-size: 13px;
+}
+
+.text-primary-card {
+  color: #008686;
+}
