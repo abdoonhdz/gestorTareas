@@ -8,7 +8,7 @@
     <p class="medium"><span class="text-primary-card">Prioridad:</span> {{ data.task.priority | titlecase }}</p>
     <p class="medium"><span class="text-primary-card">Asignado a:</span> {{ data.task.assignedTo | titlecase }}</p>
     <p class="medium"><span class="text-primary-card">Tiempo estimado:</span> {{ data.task.estimatedTime }}h</p>
-    <p class="medium"><span class="text-primary-card">Categoría:</span> {{ data.task.category | titlecase }}</p>
+    <p class="medium"><span class="text-primary-card">Categoría:</span> {{ data.task.category.name | titlecase }}</p>
     <p class="medium"><span class="text-primary-card">Descripción:</span> {{ data.task.description }}</p>
   </div>
 
@@ -19,7 +19,7 @@
     <p class="medium"><span class="text-primary-card">Prioridad:</span> {{ data.task.priority | titlecase }}</p>
     <p class="medium"><span class="text-primary-card">Asignado a:</span> {{ data.task.assignedTo | titlecase }}</p>
     <p class="medium"><span class="text-primary-card">Tiempo estimado:</span> {{ data.task.estimatedTime }}h</p>
-    <p class="medium"><span class="text-primary-card">Categoría:</span> {{ data.task.category | titlecase }}</p>
+    <p class="medium"><span class="text-primary-card">Categoría:</span> {{ data.task.category.name | titlecase }}</p>
     <p class="medium"><span class="text-primary-card">Descripción:</span> {{ data.task.description }}</p>
   </div>
 </div>

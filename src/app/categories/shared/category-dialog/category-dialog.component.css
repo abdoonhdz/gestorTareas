@@ -1,0 +1,13 @@
+mat-dialog-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+mat-dialog-content {
+  font-size: 1rem;
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+}

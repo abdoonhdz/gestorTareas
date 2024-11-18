@@ -30,9 +30,13 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Categoría</mat-label>
-    <input matInput formControlName="category">
-    <mat-error *ngIf="taskForm.get('category')?.hasError('required')" class="text-error">La categoría es obligatoria</mat-error>
+    <mat-select formControlName="category" [compareWith]="compareCategories">
+      <mat-option *ngFor="let category of categories" [value]="category">
+        {{ category.name }}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
+
 
   <mat-form-field appearance="fill">
     <mat-label>Estado</mat-label>

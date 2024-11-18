@@ -8,6 +8,7 @@ import { MaterialModule } from './material/material.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient } from '@angular/common/http';
 import { SideMenuComponent } from './core/side-menu/side-menu.component';
+import { CategoriesModule } from './categories/categories.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SideMenuComponent } from './core/side-menu/side-menu.component';
     TaskModule,
     BrowserAnimationsModule,
     MaterialModule,
+    CategoriesModule
   ],
   providers: [
     provideHttpClient(),

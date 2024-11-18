@@ -1,0 +1,27 @@
+<div class="vista">
+  <div class="task-categories mb-3">
+    <form [formGroup]="categoryForm" (ngSubmit)="createCategory()">
+      <div>
+        <label for="name">Nombre de la Categoría:</label>
+        <div class="d-flex flex-row row">
+          <input id="name" formControlName="name" class="col-9" />
+          <button type="submit" [disabled]="categoryForm.invalid" class="col-3">Crear Categoría</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+
+  <div class="task-categories">
+    <div class="categories-list">
+      <ul>
+        <li *ngFor="let category of categories">
+          {{ category.name }}
+          <button (click)="deleteCategory(category.id)">Eliminar</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+

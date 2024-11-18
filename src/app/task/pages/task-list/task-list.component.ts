@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from '../../models/task.model';
 import { TaskService } from '../../services/task.service';
 import { FormControl } from '@angular/forms';
+import { Categories } from '../../../categories/models/categories.model';
 
 @Component({
   selector: 'app-task-list',
@@ -14,7 +15,7 @@ export class TaskListComponent implements OnInit {
   taskStatuses: Task['status'][] = ['pendiente', 'en progreso', 'en pruebas', 'completada'];
   categoryControl: FormControl = new FormControl('Todas');
   searchControl: FormControl = new FormControl('');
-  categories: string[] = [];
+  categories: Categories[] = [];
 
   constructor(private taskService: TaskService) {}
 
@@ -22,40 +23,42 @@ export class TaskListComponent implements OnInit {
     this.taskService.tasks$.subscribe((tasks: Task[]) => {
       this.tasks = tasks;
       this.filteredTasks = tasks;
-      this.categories = Array.from(new Set(tasks.map(task => task.category)));
+
+      const uniqueCategoriesMap = new Map<string, Categories>();
+      tasks.forEach(task => {
+        if (!uniqueCategoriesMap.has(task.category.id)) {
+          uniqueCategoriesMap.set(task.category.id, task.category);
+        }
+      });
+      this.categories = Array.from(uniqueCategoriesMap.values());
     });
 
     this.taskService.loadTasks();
 
-    this.categoryControl.valueChanges.subscribe((selectedCategory) => {
-      this.filterTasksByCategory(selectedCategory);
-    });
-
-    this.searchControl.valueChanges.subscribe((query) => {
-      this.onSearch(query);
-    });
+    this.categoryControl.valueChanges.subscribe(() => this.applyFilters());
+    this.searchControl.valueChanges.subscribe(() => this.applyFilters());
   }
 
-  filterTasksByCategory(selectedCategory: string): void {
-    if (selectedCategory === 'Todas') {
-      this.filteredTasks = this.tasks;
-    } else if (selectedCategory) {
-      this.filteredTasks = this.tasks.filter(task => task.category === selectedCategory);
-    }
-  }
+  applyFilters(): void {
+    const selectedCategory = this.categoryControl.value;
+    const searchQuery = this.searchControl.value.toLowerCase();
 
-  onSearch(event: Event): void {
-    const input = (event.target as HTMLInputElement).value.toLowerCase();
-    this.filteredTasks = this.tasks.filter((task) =>
-      task.title.toLowerCase().includes(input) ||
-      task.assignedTo.toLowerCase().includes(input) ||
-      task.priority.toLowerCase().includes(input)
-    );
+    this.filteredTasks = this.tasks.filter(task => {
+      const matchesCategory =
+        selectedCategory === 'Todas' || task.category.id === selectedCategory.id;
+      const matchesSearch =
+        !searchQuery ||
+        task.title.toLowerCase().includes(searchQuery) ||
+        task.assignedTo.toLowerCase().includes(searchQuery) ||
+        task.priority.toLowerCase().includes(searchQuery);
+
+      return matchesCategory && matchesSearch;
+    });
   }
 
   clearFilters(): void {
-    this.categoryControl.setValue('Todas');
-    this.searchControl.setValue('');
+    this.categoryControl.setValue('Todas', { emitEvent: false });
+    this.searchControl.setValue('', { emitEvent: false });
     this.filteredTasks = [...this.tasks];
   }
 

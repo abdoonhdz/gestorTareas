@@ -8,6 +8,11 @@ const routes: Routes = [
     data: { animation: 'TasksPage' }
   },
   {
+    path: 'categories',
+    loadChildren: () => import('./categories/categories.module').then(m => m.CategoriesModule),
+    data: { animation: 'CategoriesPage' }
+  },
+  {
     path: '',
     redirectTo: 'tasks',
     pathMatch: 'full'

@@ -5,6 +5,8 @@ import { TaskService } from '../../services/task.service';
 import { Task } from '../../models/task.model';
 import Swal from 'sweetalert2';
 import { firstValueFrom } from 'rxjs';
+import { CategoriesService } from '../../../categories/services/categories.service';
+import { Categories } from '../../../categories/models/categories.model';
 
 @Component({
   selector: 'task-form-generic',
@@ -16,11 +18,14 @@ export class TaskFormGenericComponent implements OnInit {
   taskForm: FormGroup;
   task: Task | null = null;
 
+  categories: Categories[] = [];
+
+
   constructor(
     private fb: FormBuilder,
     private taskService: TaskService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private categoriesService: CategoriesService
   ) {
     this.taskForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(6)]],
@@ -37,6 +42,13 @@ export class TaskFormGenericComponent implements OnInit {
     if (this.taskId) {
       this.loadTask();
     }
+    this.loadCategories();
+  }
+
+  loadCategories(): void {
+    this.categoriesService.getCategories().subscribe(categories => {
+      this.categories = categories;
+    });
   }
 
   loadTask(): void {
@@ -44,6 +56,10 @@ export class TaskFormGenericComponent implements OnInit {
       this.task = task;
       this.taskForm.patchValue(task);
     });
+  }
+
+  compareCategories(c1: Categories, c2: Categories): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
 
   onSubmit(): void {

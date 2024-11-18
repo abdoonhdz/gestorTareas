@@ -7,18 +7,8 @@ import { Task } from '../../models/task.model';
   styleUrls: ['./task-column.component.css']
 })
 export class TaskColumnComponent {
-  @Input() title: string = '';
   @Input() tasks: Task[] = [];
   @Input() status!: Task['status'];
-  @Output() taskDeleted = new EventEmitter<number>();
-
-  onDeleteTask(taskId: number) {
-    this.taskDeleted.emit(taskId);
-  }
-
-  trackById(index: number, task: Task): number {
-    return task.id;
-  }
 
   handleTaskDeleted(taskId: number): void {
     this.tasks = this.tasks.filter(task => task.id !== taskId);
