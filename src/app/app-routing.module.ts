@@ -13,6 +13,11 @@ const routes: Routes = [
     data: { animation: 'CategoriesPage' }
   },
   {
+    path: 'sprints',
+    loadChildren: () => import('./sprints/sprints.module').then(m => m.SprintsModule),
+    data: { animation: 'SprintsPage' }
+  },
+  {
     path: '',
     redirectTo: 'tasks',
     pathMatch: 'full'

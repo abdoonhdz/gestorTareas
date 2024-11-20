@@ -19,6 +19,8 @@ export class TaskFormGenericComponent implements OnInit {
   task: Task | null = null;
 
   categories: Categories[] = [];
+  availableTasks: Task[] = [];
+  subtasks: Task[] = [];
 
 
   constructor(
@@ -35,14 +37,42 @@ export class TaskFormGenericComponent implements OnInit {
       status: ['', Validators.required],
       estimatedTime: ['', [Validators.required, Validators.pattern(/^([0-1][0-9]|2[0-3]):([0-5][0-9])$/)]],
       description: ['', [Validators.required, Validators.minLength(20)]],
+      subtasks: [[]],
     });
   }
 
   ngOnInit(): void {
     if (this.taskId) {
+      console.log('Cargando tarea con ID:', this.taskId);
       this.loadTask();
     }
     this.loadCategories();
+    this.loadAvailableTasks();
+
+    this.taskForm.get('category')?.valueChanges.subscribe((category) => {
+      if (category.name === 'Épica') {
+        this.taskForm.get('estimatedTime')?.clearValidators();
+        this.taskForm.get('description')?.clearValidators();
+        this.taskForm.get('assignedTo')?.clearValidators();
+      } else {
+        this.taskForm.get('estimatedTime')?.setValidators([Validators.required, Validators.pattern(/^([0-1][0-9]|2[0-3]):([0-5][0-9])$/)]);
+        this.taskForm.get('description')?.setValidators([Validators.required, Validators.minLength(20)]);
+        this.taskForm.get('assignedTo')?.setValidators([Validators.required, Validators.minLength(3)]);
+      }
+
+      this.taskForm.get('estimatedTime')?.updateValueAndValidity();
+      this.taskForm.get('description')?.updateValueAndValidity();
+      this.taskForm.get('assignedTo')?.updateValueAndValidity();
+    });
+
+  }
+
+  loadAvailableTasks(): void {
+    this.taskService.getTasks().subscribe(tasks => {
+      this.availableTasks = tasks.filter(
+        task => task.id !== +this.taskId! && task.status !== 'completada' && task.category.name !== 'Épica'
+      );
+    });
   }
 
   loadCategories(): void {
@@ -55,8 +85,28 @@ export class TaskFormGenericComponent implements OnInit {
     this.taskService.getTaskById(this.taskId!).subscribe(task => {
       this.task = task;
       this.taskForm.patchValue(task);
+
+      console.log('Categoría de la tarea:', task.category.name);
+
+      if (task.category.name === 'Épica') {
+        this.loadSubtasks(task.subtasks || []);
+        this.taskForm.get('assignedTo')?.disable();
+        this.taskForm.get('description')?.disable();
+        this.taskForm.get('estimatedTime')?.disable();
+      }
     });
   }
+
+  loadSubtasks(subtaskIds: number[]): void {
+    if (subtaskIds.length > 0) {
+      console.log('Subtareas cargadas:', subtaskIds);
+      this.taskService.getTasksByIds(subtaskIds).subscribe(subtasks => {
+        console.log('Subtareas obtenidas:', subtasks);
+        this.subtasks = subtasks;
+      });
+    }
+  }
+
 
   compareCategories(c1: Categories, c2: Categories): boolean {
     return c1 && c2 ? c1.id === c2.id : c1 === c2;
@@ -65,6 +115,24 @@ export class TaskFormGenericComponent implements OnInit {
   onSubmit(): void {
     if (this.taskForm.valid) {
       if (this.taskId) {
+
+        if (this.task && this.task.category.name !== 'Épica' && this.taskForm.get('category')?.value.name === 'Épica') {
+          Swal.fire({
+            title: 'Error',
+            text: 'No se puede cambiar la categoría a "Épica" porque ya tiene una categoría asignada.',
+            icon: 'error',
+            confirmButtonText: 'Aceptar',
+            confirmButtonColor: '#008686',
+            customClass: {
+              popup: 'swal-popup',
+              confirmButton: 'swal-confirm-btn'
+            },
+            background: '#101414',
+            color: 'white'
+          });
+          return;
+        }
+
         const updatedTask = this.taskForm.value;
         this.updateTask(updatedTask);
       } else {
@@ -90,6 +158,10 @@ export class TaskFormGenericComponent implements OnInit {
   createTask(task: Task): void {
     if (this.taskForm.valid) {
       const newTask: Task = this.taskForm.value;
+
+      if (newTask.category.name === 'Épica') {
+        newTask.subtasks = this.taskForm.get('subtasks')?.value || [];
+      }
 
       try {
         firstValueFrom(this.taskService.createTask(newTask));
@@ -154,6 +226,11 @@ export class TaskFormGenericComponent implements OnInit {
   }
 
   updateTask(task: Task): void {
+
+    if (task.category.name === 'Épica') {
+      task.subtasks = this.taskForm.get('subtasks')?.value || [];
+    }
+
     firstValueFrom(this.taskService.updateTask(this.taskId!, task)).then(() => {
       Swal.fire({
         title: '¡Éxito!',

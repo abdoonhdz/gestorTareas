@@ -10,20 +10,20 @@ import { trigger, transition, style, animate, query, group } from '@angular/anim
     trigger('routeAnimations', [
       transition('void => *', [
         style({ opacity: 0 }),
-        animate(300, style({ opacity: 1 }))
+        animate(200, style({ opacity: 1 }))
       ]),
       transition('* => void', [
         style({ opacity: 1 }),
-        animate(300, style({ opacity: 0 }))
+        animate(200, style({ opacity: 0 }))
       ]),
       transition('* <=> *', [
         query(':enter', [
           style({ opacity: 0 }),
-          animate(300, style({ opacity: 1}))
+          animate(200, style({ opacity: 1}))
         ], { optional: true }),
         query(':leave', [
           style({ opacity: 1 }),
-          animate(300, style({ opacity: 0 }))
+          animate(200, style({ opacity: 0 }))
         ], { optional: true }),
       ])
     ])

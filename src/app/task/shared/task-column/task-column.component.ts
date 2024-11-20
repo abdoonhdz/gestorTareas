@@ -13,4 +13,13 @@ export class TaskColumnComponent {
   handleTaskDeleted(taskId: number): void {
     this.tasks = this.tasks.filter(task => task.id !== taskId);
   }
+
+  shouldDisplayTask(task: Task): boolean {
+    for (let t of this.tasks) {
+      if (t.subtasks && t.subtasks.includes(task.id)) {
+        return false;
+      }
+    }
+    return true;
+  }
 }

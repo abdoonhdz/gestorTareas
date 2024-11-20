@@ -11,12 +11,13 @@
     <mat-error *ngIf="taskForm.get('title')?.hasError('minlength')" class="text-error">Debe tener al menos 6 caracteres</mat-error>
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" *ngIf="taskForm.get('category')?.value?.name !== 'Épica'">
     <mat-label>Asignado a</mat-label>
     <input matInput formControlName="assignedTo">
     <mat-error *ngIf="taskForm.get('assignedTo')?.hasError('required')" class="text-error">Asignado a es obligatorio</mat-error>
     <mat-error *ngIf="taskForm.get('assignedTo')?.hasError('minlength')" class="text-error">Debe tener al menos 3 caracteres</mat-error>
   </mat-form-field>
+
 
   <mat-form-field appearance="fill">
     <mat-label>Prioridad</mat-label>
@@ -49,14 +50,24 @@
     <mat-error *ngIf="taskForm.get('status')?.hasError('required')" class="text-error">El estado es obligatorio</mat-error>
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" *ngIf="taskForm.get('category')?.value?.name !== 'Épica'">
     <mat-label>Tiempo Estimado</mat-label>
     <input matInput formControlName="estimatedTime" placeholder="hh:mm">
     <mat-error *ngIf="taskForm.get('estimatedTime')?.hasError('required')" class="text-error">El tiempo estimado es obligatorio</mat-error>
     <mat-error *ngIf="taskForm.get('estimatedTime')?.hasError('pattern')" class="text-error">Formato incorrecto (ej: 02:30)</mat-error>
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
+
+  <mat-form-field appearance="fill" *ngIf="taskForm.get('category')?.value.name === 'Épica'">
+    <mat-label>Subtareas</mat-label>
+    <mat-select formControlName="subtasks" multiple>
+      <mat-option *ngFor="let task of availableTasks" [value]="task.id">
+        {{ task.title }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" *ngIf="taskForm.get('category')?.value?.name !== 'Épica'">
     <mat-label>Descripción</mat-label>
     <input matInput formControlName="description">
     <mat-error *ngIf="taskForm.get('description')?.hasError('required')" class="text-error">La descripción es obligatoria</mat-error>

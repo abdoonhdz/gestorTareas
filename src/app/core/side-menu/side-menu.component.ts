@@ -10,7 +10,8 @@ export class SideMenuComponent {
   public sidebarItems = [
     { label: 'Lista de Tareas', icon: 'list', url: '/tasks' },
     { label: 'Crear Nueva Tarea', icon: 'add', url: '/tasks/new' },
-    { label: 'Categorías', icon: 'category', url: '/categories' }
+    { label: 'Categorías', icon: 'category', url: '/categories' },
+    { label: 'Sprints', icon: 'watch', url: '/sprints' },
   ];
 
 }

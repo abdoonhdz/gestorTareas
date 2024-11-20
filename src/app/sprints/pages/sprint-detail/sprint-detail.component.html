@@ -1,0 +1,44 @@
+<div class="sprint-detail-container text-black">
+
+  <div *ngIf="sprint" class="detail-container">
+
+    <div class="arriba d-flex justify-content-between">
+      <h2 class="col-6"><strong>{{ sprint.name }}</strong></h2>
+      <div class="fechas col-6 d-flex align-items-center text-center">
+        <p class="col-5 mt-2">{{ sprint.startDate | date }} </p>
+        <p class="col-2 mt-2"> ---- </p>
+        <p class="col-5 mt-2">{{ sprint.endDate | date }} </p>
+      </div>
+    </div>
+
+    <div class="medio">
+      <h3 class="row">Tareas:</h3>
+      <div class="tareas">
+        <ul class="mt-2" *ngIf="tasks.length; else noTasks">
+          <li *ngFor="let task of tasks">
+            <strong>{{ task.title }}</strong> - {{ task.category.name }} ({{ task.status }})
+          </li>
+        </ul>
+        <ng-template #noTasks>
+          <p>No hay tareas asignadas a este sprint.</p>
+        </ng-template>
+      </div>
+    </div>
+
+    <div class="abajo">
+      <h3 class="row mt-5">Descripción:</h3>
+      <div class="descripcion">
+        <p class="mt-2 ms-4">{{sprint.description}}</p>
+      </div>
+      <button (click)="goBackButton()" class="mt-5 btn-cancel">
+        Volver atrás
+      </button>
+    </div>
+
+  </div>
+
+
+</div>
+
+
+

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Task } from '../models/task.model';
 
@@ -27,6 +27,15 @@ export class TaskService {
     return this.http.get<Task>(`${this.apiUrl}/${id}`);
   }
 
+  getTasksByIds(ids: number[]): Observable<Task[]> {
+    const params = ids.map(id => `id=${id}`).join('&');
+    return this.http.get<Task[]>(`${this.apiUrl}?${params}`);
+  }
+
+  getAllTasks(): Observable<Task[]> {
+    return this.http.get<Task[]>(`${this.apiUrl}`);
+  }
+
   createTask(task: Task): Observable<Task> {
     return this.http.post<Task>(this.apiUrl, task);
   }
@@ -37,6 +46,10 @@ export class TaskService {
 
   deleteTask(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  addTask(task: Task): Observable<Task> {
+    return this.createTask(task);
   }
 
 }

@@ -9,4 +9,5 @@ export interface Task {
   status: 'pendiente' | 'en progreso' | 'en pruebas' | 'completada';
   estimatedTime: string;
   description: string;
+  subtasks?: number[];
 }

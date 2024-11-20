@@ -1,6 +1,6 @@
 <div class="task-list mt-2 mb-2">
   <div class="search-bar col-12">
-    <input class="col-8" [formControl]="searchControl" placeholder="Buscar por título, asignado o prioridad"/>
+    <input class="col-8" [formControl]="searchControl" placeholder="Buscar por título, asignado o prioridad" />
 
     <div class="category-filter col-2">
       <select [formControl]="categoryControl">
@@ -17,4 +17,5 @@
       <task-column [tasks]="filteredTasks" [status]="status"></task-column>
     </div>
   </div>
+
 </div>

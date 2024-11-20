@@ -11,6 +11,7 @@
       "status": "pendiente",
       "estimatedTime": "04:00",
       "description": "Diseñar los mockups iniciales para la nueva funcionalidad del proyecto.",
+      "subtasks": [],
       "id": "a123"
     },
     {
@@ -44,12 +45,13 @@
       "assignedTo": "Ana López",
       "priority": "alta",
       "category": {
-        "id": "22aa",
-        "name": "Test"
+        "id": "752a",
+        "name": "Prueba"
       },
       "status": "completada",
       "estimatedTime": "05:00",
       "description": "Optimizar el backend para mejorar la respuesta de las API.",
+      "subtasks": [],
       "id": "d012"
     },
     {
@@ -57,12 +59,13 @@
       "assignedTo": "José Ramírez",
       "priority": "baja",
       "category": {
-        "id": "752a",
-        "name": "Prueba"
+        "id": "d553",
+        "name": "Ejemplo"
       },
       "status": "en progreso",
       "estimatedTime": "01:30",
       "description": "Actualizar la documentación del proyecto con las últimas funcionalidades añadidas.",
+      "subtasks": [],
       "id": "e345"
     },
     {
@@ -79,17 +82,22 @@
       "id": "f678"
     },
     {
-      "title": "Análisis de Métricas",
-      "assignedTo": "María Sánchez",
-      "priority": "media",
+      "id": "1ccd",
+      "title": "Tareas Pendientes",
+      "assignedTo": "",
+      "priority": "alta",
       "category": {
-        "id": "752a",
-        "name": "Prueba"
+        "id": "d930",
+        "name": "Épica",
+        "description": ""
       },
       "status": "pendiente",
-      "estimatedTime": "02:00",
-      "description": "Analizar las métricas de rendimiento para identificar áreas de mejora.",
-      "id": "g901"
+      "estimatedTime": "",
+      "description": "",
+      "subtasks": [
+        "a123",
+        "c789"
+      ]
     }
   ],
   "categories": [
@@ -104,6 +112,36 @@
     {
       "id": "d553",
       "name": "Ejemplo"
+    },
+    {
+      "id": "d930",
+      "name": "Épica",
+      "description": ""
+    }
+  ],
+  "sprints": [
+    {
+      "id": "c433",
+      "name": "Primer Sprint",
+      "description": "Este Sprint es el primero creado para la comprobación de su funcionamiento.",
+      "startDate": "2024-11-02T23:00:00.000Z",
+      "endDate": "2024-11-16T23:00:00.000Z",
+      "tasks": [
+        "d012",
+        "f678"
+      ]
+    },
+    {
+      "id": "7320",
+      "name": "Segundo Sprint",
+      "description": "Sprint creado para comprobar el funcionamiento de la lista actualizada.",
+      "startDate": "2024-11-23T23:00:00.000Z",
+      "endDate": "2024-12-07T23:00:00.000Z",
+      "tasks": [
+        "b456",
+        "e345",
+        "1ccd"
+      ]
     }
   ]
 }

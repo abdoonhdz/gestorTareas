@@ -1,0 +1,17 @@
+<div class="vista">
+  <div class="sprint-list">
+    <h2>Lista de Sprints</h2>
+    <div *ngFor="let sprint of sprints" class="sprint-card mt-4" (click)="viewSprintDetail(sprint.id)">
+      <div class="sprint-header">
+        <h3>{{ sprint.name }}</h3>
+      </div>
+      <div class="sprint-content">
+        <p><strong>Fecha de inicio:</strong> {{ sprint.startDate | date }}</p>
+        <p><strong>Fecha de fin:</strong> {{ sprint.endDate | date }}</p>
+        <p><strong>Tareas/Epicas:</strong> {{ sprint.tasks.length }}</p>
+      </div>
+    </div>
+    <button (click)="createSprint()" class="btn-cancel mt-5">Crear Sprint</button>
+  </div>
+</div>
+
