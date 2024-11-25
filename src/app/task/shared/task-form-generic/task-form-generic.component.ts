@@ -7,6 +7,8 @@ import Swal from 'sweetalert2';
 import { firstValueFrom } from 'rxjs';
 import { CategoriesService } from '../../../categories/services/categories.service';
 import { Categories } from '../../../categories/models/categories.model';
+import { User } from '../../../users/models/user.model';
+import { UsersService } from '../../../users/services/users.service';
 
 @Component({
   selector: 'task-form-generic',
@@ -21,12 +23,14 @@ export class TaskFormGenericComponent implements OnInit {
   categories: Categories[] = [];
   availableTasks: Task[] = [];
   subtasks: Task[] = [];
+  users: User[] = [];
 
 
   constructor(
     private fb: FormBuilder,
     private taskService: TaskService,
     private router: Router,
+    private usersService : UsersService ,
     private categoriesService: CategoriesService
   ) {
     this.taskForm = this.fb.group({
@@ -48,6 +52,7 @@ export class TaskFormGenericComponent implements OnInit {
     }
     this.loadCategories();
     this.loadAvailableTasks();
+    this.loadUsers();
 
     this.taskForm.get('category')?.valueChanges.subscribe((category) => {
       if (category.name === 'Épica') {
@@ -65,6 +70,12 @@ export class TaskFormGenericComponent implements OnInit {
       this.taskForm.get('assignedTo')?.updateValueAndValidity();
     });
 
+  }
+
+  loadUsers(): void {
+    this.usersService.getUsers().subscribe(users => {
+      this.users = users;
+    });
   }
 
   loadAvailableTasks(): void {

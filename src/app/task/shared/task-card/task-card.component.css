@@ -9,6 +9,19 @@
   margin-bottom: 30px;
   background-color: rgba(255, 255, 255, 0.874);
   color: black;
+  border-radius: 10px;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+
+.cdk-drag-preview {
+  transform: scale(0.9);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  opacity: 0.9;
+  transition: transform 0.2s ease-in-out;
 }
 
 
@@ -47,7 +60,8 @@
 }
 
 .in-progress {
-  filter: drop-shadow(0 0 0.2rem #008686);}
+  filter: drop-shadow(0 0 0.2rem #008686);
+}
 
 .pending {
   filter: drop-shadow(0 0 0.2rem #806d62);
@@ -101,8 +115,11 @@
   margin-top: 0;
 }
 
-
 .mat-mt {
   margin-top: 1rem;
 }
 
+.task-card .content {
+  overflow: auto;
+  max-height: 100%;
+}

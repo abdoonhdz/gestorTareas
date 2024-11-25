@@ -18,3 +18,15 @@
   color: #1E1E1E;
   font-weight: 500;
 }
+
+
+.cdk-drag-preview {
+  border-radius: 10px;
+  opacity: 0.9;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

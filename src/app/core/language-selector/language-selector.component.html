@@ -1,0 +1,6 @@
+<div class="me-4 language-selector">
+  <select id="languageSelect" [formControl]="languageControl" (change)="onLanguageChange()">
+    <option value="es">{{ 'Español' | translate }}</option>
+    <option value="en">{{ 'Inglés' | translate }}</option>
+  </select>
+</div>

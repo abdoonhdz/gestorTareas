@@ -12,7 +12,7 @@
     </div>
 
     <div class="medio">
-      <h3 class="row">Tareas:</h3>
+      <h3 class="row">{{'Tareas' | translate}}:</h3>
       <div class="tareas">
         <ul class="mt-2" *ngIf="tasks.length; else noTasks">
           <li *ngFor="let task of tasks">
@@ -20,18 +20,18 @@
           </li>
         </ul>
         <ng-template #noTasks>
-          <p>No hay tareas asignadas a este sprint.</p>
+          <p>{{'No-tareas' | translate}}.</p>
         </ng-template>
       </div>
     </div>
 
     <div class="abajo">
-      <h3 class="row mt-5">Descripción:</h3>
+      <h3 class="row mt-5">{{'Descripcion' | translate}}:</h3>
       <div class="descripcion">
         <p class="mt-2 ms-4">{{sprint.description}}</p>
       </div>
       <button (click)="goBackButton()" class="mt-5 btn-cancel">
-        Volver atrás
+        {{'Volver' | translate}}
       </button>
     </div>
 

@@ -6,6 +6,7 @@ import { CategoryViewComponent } from './pages/category-view/category-view.compo
 import { CategoryFormComponent } from './shared/category-form/category-form.component';
 import { CategoriesRoutingModule } from './categories-routing.module';
 import { CategoryDialogComponent } from './shared/category-dialog/category-dialog.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CategoryDialogComponent } from './shared/category-dialog/category-dialo
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    CategoriesRoutingModule
+    CategoriesRoutingModule,
+    TranslateModule
   ],
   providers: [
 

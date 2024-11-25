@@ -6,6 +6,7 @@ import { SprintDetailComponent } from './pages/sprint-detail/sprint-detail.compo
 import { SprintListComponent } from './pages/sprint-list/sprint-list.component';
 import { SprintRoutingModule } from './sprints-routing.module';
 import { SprintNewComponent } from './pages/sprint-new/sprint-new.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SprintNewComponent } from './pages/sprint-new/sprint-new.component';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    SprintRoutingModule
+    SprintRoutingModule,
+    TranslateModule
   ],
   providers: [
   ],

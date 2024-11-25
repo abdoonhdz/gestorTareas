@@ -11,6 +11,10 @@ import { TaskService } from './services/task.service';
 import { TaskDetailsDialogComponent } from './shared/task-dialog/task-dialog.component';
 import { TaskColumnComponent } from './shared/task-column/task-column.component';
 import { TaskFormGenericComponent } from './shared/task-form-generic/task-form-generic.component';
+import { TaskFilterPipe } from './pipes/task-filter.pipe';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { TranslateModule } from '@ngx-translate/core';
+
 
 @NgModule({
   declarations: [
@@ -21,6 +25,7 @@ import { TaskFormGenericComponent } from './shared/task-form-generic/task-form-g
     TaskDetailsDialogComponent,
     TaskColumnComponent,
     TaskFormGenericComponent,
+    TaskFilterPipe,
   ],
   imports: [
     CommonModule,
@@ -28,6 +33,8 @@ import { TaskFormGenericComponent } from './shared/task-form-generic/task-form-g
     ReactiveFormsModule,
     TaskRoutingModule,
     MaterialModule,
+    DragDropModule,
+    TranslateModule
   ],
   providers: [
     TaskService

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Task } from '../../models/task.model';
 import { TaskService } from '../../services/task.service';
 import { FormControl } from '@angular/forms';
 import { Categories } from '../../../categories/models/categories.model';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-task-list',
@@ -11,18 +12,22 @@ import { Categories } from '../../../categories/models/categories.model';
 })
 export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
-  filteredTasks: Task[] = [];
   taskStatuses: Task['status'][] = ['pendiente', 'en progreso', 'en pruebas', 'completada'];
   categoryControl: FormControl = new FormControl('Todas');
   searchControl: FormControl = new FormControl('');
   categories: Categories[] = [];
+  selectedLanguage: string = '';
 
-  constructor(private taskService: TaskService) {}
+
+  constructor(private taskService: TaskService, private translate: TranslateService, private cdr: ChangeDetectorRef) {
+    const browserLang = this.translate.getBrowserLang();
+    this.selectedLanguage = browserLang || 'es';
+    this.translate.use(this.selectedLanguage);
+  }
 
   ngOnInit(): void {
     this.taskService.tasks$.subscribe((tasks: Task[]) => {
       this.tasks = tasks;
-      this.filteredTasks = tasks;
 
       const uniqueCategoriesMap = new Map<string, Categories>();
       tasks.forEach(task => {
@@ -34,35 +39,25 @@ export class TaskListComponent implements OnInit {
     });
 
     this.taskService.loadTasks();
-
-    this.categoryControl.valueChanges.subscribe(() => this.applyFilters());
-    this.searchControl.valueChanges.subscribe(() => this.applyFilters());
-  }
-
-  applyFilters(): void {
-    const selectedCategory = this.categoryControl.value;
-    const searchQuery = this.searchControl.value.toLowerCase();
-
-    this.filteredTasks = this.tasks.filter(task => {
-      const matchesCategory =
-        selectedCategory === 'Todas' || task.category.id === selectedCategory.id;
-      const matchesSearch =
-        !searchQuery ||
-        task.title.toLowerCase().includes(searchQuery) ||
-        task.assignedTo.toLowerCase().includes(searchQuery) ||
-        task.priority.toLowerCase().includes(searchQuery);
-
-      return matchesCategory && matchesSearch;
-    });
   }
 
   clearFilters(): void {
     this.categoryControl.setValue('Todas', { emitEvent: false });
     this.searchControl.setValue('', { emitEvent: false });
-    this.filteredTasks = [...this.tasks];
+  }
+
+  getTasksByStatus(status: Task['status']): Task[] {
+    return this.tasks.filter(task => task.status === status);
   }
 
   trackStatus(index: number, status: string): string {
     return status;
   }
+
+  updateTask(task: Task): void {
+    this.taskService.updateTask(task.id.toString(), task).subscribe(() => {
+    });
+  }
+
+
 }

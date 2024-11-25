@@ -2,10 +2,10 @@
   <div class="task-categories mb-3">
     <form [formGroup]="categoryForm" (ngSubmit)="createCategory()">
       <div>
-        <label for="name">Nombre de la Categoría:</label>
+        <label for="name">{{'Nombre-categoria' | translate}}:</label>
         <div class="d-flex flex-row row">
           <input id="name" formControlName="name" class="col-9" />
-          <button type="submit" [disabled]="categoryForm.invalid" class="col-3">Crear Categoría</button>
+          <button type="submit" [disabled]="categoryForm.invalid" class="col-3">{{'Crear-categoria' | translate}}</button>
         </div>
       </div>
     </form>
@@ -17,7 +17,7 @@
       <ul>
         <li *ngFor="let category of categories">
           {{ category.name }}
-          <button (click)="deleteCategory(category.id)">Eliminar</button>
+          <button (click)="deleteCategory(category.id)">{{'Eliminar' | translate}}</button>
         </li>
       </ul>
     </div>

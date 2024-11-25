@@ -1,8 +1,30 @@
 <div class="task-column">
   <h4 class="mb-4 title">{{ status | titlecase }}</h4>
-  @for (task of tasks; track task.id) {
-    @if (task.status === status && shouldDisplayTask(task)) {
-      <task-card [task]="task" (taskDeleted)="handleTaskDeleted($event)"></task-card>
-    }
-  }
+  <div
+    cdkDropList
+    [cdkDropListData]="tasks"
+    [cdkDropListConnectedTo]="connectedListsFiltered"
+    [id]="dropListId"
+    class="task-list"
+    (cdkDropListDropped)="onDrop($event)">
+
+    <div *ngIf="tasks.length === 0" class="empty-column-placeholder">
+      <p>No hay tareas en esta columna</p>
+    </div>
+
+    <ng-container *ngFor="let task of tasks; trackBy: trackByTaskId">
+      <div
+        *ngIf="isNotSubtask(task)"
+        cdkDrag
+        class="task-card">
+
+        <task-card [task]="task" (taskDeleted)="handleTaskDeleted($event)"></task-card>
+
+      </div>
+    </ng-container>
+
+  </div>
 </div>
+
+
+

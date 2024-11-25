@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { trigger, transition, style, animate, query, group } from '@angular/animations';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -29,8 +30,29 @@ import { trigger, transition, style, animate, query, group } from '@angular/anim
     ])
   ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'gestorTareas';
+
+  constructor(private translate: TranslateService) {
+
+    const defaultLang = 'es';
+    const supportedLanguages = ['en', 'es'];
+
+    translate.addLangs(supportedLanguages);
+    translate.setDefaultLang(defaultLang);
+
+    const browserLang = this.translate.getBrowserLang() || defaultLang;
+    console.log('Idioma del navegador:', browserLang);
+
+    const languageToUse = supportedLanguages.includes(browserLang) ? browserLang : defaultLang;
+    console.log('Idioma seleccionado:', languageToUse);
+    translate.use(languageToUse);
+  }
+
+  ngOnInit() {
+    const savedLanguage = localStorage.getItem('language') || 'es';
+    this.translate.use(savedLanguage);
+  }
 
   prepareRoute(outlet: RouterOutlet) {
     return outlet?.activatedRouteData['animation'];

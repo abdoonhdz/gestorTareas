@@ -6,14 +6,25 @@ import { TaskModule } from './task/task.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideHttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { SideMenuComponent } from './core/side-menu/side-menu.component';
 import { CategoriesModule } from './categories/categories.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpErrorInterceptor } from './core/interceptors/http-error.interceptor';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { LanguageSelectorComponent } from './core/language-selector/language-selector.component';
+
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
     AppComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    LanguageSelectorComponent
   ],
   imports: [
     BrowserModule,
@@ -21,11 +32,26 @@ import { CategoriesModule } from './categories/categories.module';
     TaskModule,
     BrowserAnimationsModule,
     MaterialModule,
-    CategoriesModule
+    CategoriesModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
   ],
   providers: [
-    provideHttpClient(),
-    provideAnimationsAsync()
+    provideHttpClient(
+      withInterceptorsFromDi()
+    ),
+    provideAnimationsAsync(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true,
+    },
+    TranslateService
   ],
   bootstrap: [AppComponent]
 })

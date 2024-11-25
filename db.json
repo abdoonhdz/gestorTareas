@@ -2,7 +2,7 @@
   "tasks": [
     {
       "title": "Diseñar Mockups",
-      "assignedTo": "Carlos García",
+      "assignedTo": "Abdón",
       "priority": "alta",
       "category": {
         "id": "752a",
@@ -16,20 +16,21 @@
     },
     {
       "title": "Revisión de Código",
-      "assignedTo": "Laura Méndez",
+      "assignedTo": "Abdón",
       "priority": "baja",
       "category": {
         "id": "22aa",
         "name": "Test"
       },
-      "status": "en pruebas",
+      "status": "en progreso",
       "estimatedTime": "03:00",
       "description": "Realizar revisión del código entregado por el equipo de desarrollo.",
+      "subtasks": [],
       "id": "b456"
     },
     {
       "title": "Pruebas Unitarias",
-      "assignedTo": "Roberto Díaz",
+      "assignedTo": "Abdón",
       "priority": "media",
       "category": {
         "id": "d553",
@@ -38,17 +39,18 @@
       "status": "pendiente",
       "estimatedTime": "02:00",
       "description": "Escribir pruebas unitarias para los componentes recién creados.",
+      "subtasks": [],
       "id": "c789"
     },
     {
       "title": "Optimización del Backend",
-      "assignedTo": "Ana López",
+      "assignedTo": "Usuario 2",
       "priority": "alta",
       "category": {
         "id": "752a",
         "name": "Prueba"
       },
-      "status": "completada",
+      "status": "en progreso",
       "estimatedTime": "05:00",
       "description": "Optimizar el backend para mejorar la respuesta de las API.",
       "subtasks": [],
@@ -56,13 +58,13 @@
     },
     {
       "title": "Actualización de Documentación",
-      "assignedTo": "José Ramírez",
+      "assignedTo": "Abdón",
       "priority": "baja",
       "category": {
         "id": "d553",
         "name": "Ejemplo"
       },
-      "status": "en progreso",
+      "status": "en pruebas",
       "estimatedTime": "01:30",
       "description": "Actualizar la documentación del proyecto con las últimas funcionalidades añadidas.",
       "subtasks": [],
@@ -70,7 +72,7 @@
     },
     {
       "title": "Despliegue a Producción",
-      "assignedTo": "Andrea Ruiz",
+      "assignedTo": "Usuario 2",
       "priority": "alta",
       "category": {
         "id": "d553",
@@ -79,12 +81,12 @@
       "status": "completada",
       "estimatedTime": "03:30",
       "description": "Desplegar la versión estable del sistema a producción.",
+      "subtasks": [],
       "id": "f678"
     },
     {
       "id": "1ccd",
       "title": "Tareas Pendientes",
-      "assignedTo": "",
       "priority": "alta",
       "category": {
         "id": "d930",
@@ -92,8 +94,6 @@
         "description": ""
       },
       "status": "pendiente",
-      "estimatedTime": "",
-      "description": "",
       "subtasks": [
         "a123",
         "c789"
@@ -115,8 +115,7 @@
     },
     {
       "id": "d930",
-      "name": "Épica",
-      "description": ""
+      "name": "Épica"
     }
   ],
   "sprints": [
@@ -142,6 +141,26 @@
         "e345",
         "1ccd"
       ]
+    }
+  ],
+  "users": [
+    {
+      "id": "fd65",
+      "name": "Abdón",
+      "email": "abdonhc70@gmail.com",
+      "password": "abdonhc70"
+    },
+    {
+      "id": "d200",
+      "name": "Usuario 2",
+      "email": "usuario@gmail.com",
+      "password": "contraseña"
+    },
+    {
+      "id": "1e6fbbf6-3830-4bfc-856a-8866891e0a5b",
+      "name": "Thomas",
+      "email": "thoms123@gmail.com",
+      "password": "Thomas!1thomas"
     }
   ]
 }

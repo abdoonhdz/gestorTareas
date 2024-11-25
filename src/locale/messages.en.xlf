@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="65806099342243534" datatype="html">
+        <source>Menú</source>
+        <target>Menu</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/side-menu/side-menu.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+        <note priority="1" from="description">Menu</note>
+      </trans-unit>
+      <trans-unit id="1993228413154023553" datatype="html">
+        <source>Lista de Tareas</source>
+        <target>List Tasks</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/side-menu/side-menu.component.html</context>
+          <context context-type="linenumber">9,10</context>
+        </context-group>
+        <note priority="1" from="description">Lista</note>
+      </trans-unit>
+      <trans-unit id="7820481863782509535" datatype="html">
+        <source>Crear Nueva Tarea</source>
+        <target>Create New Task</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/side-menu/side-menu.component.html</context>
+          <context context-type="linenumber">14,15</context>
+        </context-group>
+        <note priority="1" from="description">Crear tarea</note>
+      </trans-unit>
+      <trans-unit id="3349907894327926697" datatype="html">
+        <source>Categorías</source>
+        <target>Categories</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/side-menu/side-menu.component.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+        <note priority="1" from="description">Categorias</note>
+      </trans-unit>
+      <trans-unit id="4347094825344030699" datatype="html">
+        <source>Sprints</source>
+        <target>Sprints</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/side-menu/side-menu.component.html</context>
+          <context context-type="linenumber">24,25</context>
+        </context-group>
+        <note priority="1" from="description">Sprints</note>
+      </trans-unit>
+      <trans-unit id="5359751386135164450" datatype="html">
+        <source>Usuarios</source>
+        <target>Users</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/side-menu/side-menu.component.html</context>
+          <context context-type="linenumber">29,30</context>
+        </context-group>
+        <note priority="1" from="description">Usuarios</note>
+      </trans-unit>
+      <trans-unit id="6915820096342479744" datatype="html">
+        <source>Gestor de tareas</source>
+        <target>Task manager</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/side-menu/side-menu.component.html</context>
+          <context context-type="linenumber">36,38</context>
+        </context-group>
+        <note priority="1" from="description">Gestor de tareas</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

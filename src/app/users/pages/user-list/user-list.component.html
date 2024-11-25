@@ -1,0 +1,16 @@
+<div class="user-form-container">
+  <div class="user-form">
+    <div class="user-list">
+      <h2 class="mb-5">{{'Lista-usuarios' | translate}}</h2>
+      <ul>
+        <li *ngFor="let user of users" class="card">
+          {{ user.name }} - {{ user.email }}
+          <button mat-button (click)="deleteUser(user.id)" class="btn-eliminar">{{'Eliminar' | translate}}</button>
+        </li>
+      </ul>
+    </div>
+    <button mat-button (click)="createAction()" class="btn-primary">
+      {{'Crear-usuario' | translate}}
+    </button>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="user-form-container">
+  <div class="user-form">
+    <h3 class="text-primary-card">{{'Crear-usuario' | translate}}</h3>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>{{'Nombre' | translate}}</mat-label>
+        <input matInput formControlName="name" />
+        <mat-error *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched" class="text-error">
+          {{'Nombre-required' | translate}}.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>{{'Correo' | translate}}</mat-label>
+        <input matInput type="email" formControlName="email" />
+        <mat-error *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched" class="text-error">
+          {{'Correo-required' | translate}}.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>{{'Contraseña' | translate}}</mat-label>
+        <input
+          matInput
+          [type]="hidePassword ? 'password' : 'text'"
+          formControlName="password"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          type="button"
+          (click)="hidePassword = !hidePassword"
+        >
+          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="userForm.get('password')?.hasError('required') && userForm.get('password')?.touched" class="text-error">
+          {{'Contraseña-required' | translate}}.
+        </mat-error>
+        <mat-error *ngIf="userForm.get('password')?.hasError('pattern') && userForm.get('password')?.touched" class="text-error">
+          {{'Contraseña-validator' | translate}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>{{'Confirmar-contraseña' | translate}}</mat-label>
+        <input
+          matInput
+          [type]="hideConfirmPassword ? 'password' : 'text'"
+          formControlName="confirmPassword"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          type="button"
+          (click)="hideConfirmPassword = !hideConfirmPassword"
+        >
+          <mat-icon>{{ hideConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="userForm.hasError('passwordMismatch') && userForm.get('confirmPassword')?.touched" class="text-error">
+          {{'Contraseña-match' | translate}}
+        </mat-error>
+      </mat-form-field>
+
+      <div class="row d-flex justify-content-center">
+        <button mat-button type="submit" [disabled]="userForm.invalid" class="mt-1 col-6 btn-primary">
+          {{'Crear-usuario' | translate}}
+        </button>
+        <button mat-button (click)="goBackButton()" class="mt-1 ms-3 col-6 btn-primary btn-cancel">
+          {{'Ir-lista' | translate}}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

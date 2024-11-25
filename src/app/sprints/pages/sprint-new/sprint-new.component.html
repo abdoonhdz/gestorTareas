@@ -1,39 +1,39 @@
 <div class="sprint-form-container">
   <form [formGroup]="sprintForm" (ngSubmit)="onSubmit()" class="sprint-form">
-    <h3 class="text-primary-card">Crear Sprint</h3>
+    <h3 class="text-primary-card">{{'Crear-sprint' | translate}}</h3>
 
     <mat-form-field appearance="fill">
-      <mat-label>Nombre del Sprint</mat-label>
+      <mat-label>{{'Nombre-sprint' | translate}}</mat-label>
       <input matInput formControlName="name">
-      <mat-error *ngIf="sprintForm.get('name')?.hasError('required')" class="text-error">El nombre es obligatorio</mat-error>
+      <mat-error *ngIf="sprintForm.get('name')?.hasError('required')" class="text-error">{{'Nombre-required' | translate}}</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Descripción</mat-label>
+      <mat-label>{{'Descripcion' | translate}}</mat-label>
       <input matInput formControlName="description">
-      <mat-error *ngIf="sprintForm.get('description')?.hasError('required')" class="text-error">La descripción es obligatoria</mat-error>
+      <mat-error *ngIf="sprintForm.get('description')?.hasError('required')" class="text-error">{{'Descripcion-required' | translate}}</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Fecha de inicio</mat-label>
+      <mat-label>{{'Fecha-inicio' | translate}}</mat-label>
       <input matInput [matDatepicker]="startDatePicker" formControlName="startDate">
       <mat-hint class="text-hint">MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="startDatePicker"></mat-datepicker-toggle>
       <mat-datepicker #startDatePicker></mat-datepicker>
-      <mat-error *ngIf="sprintForm.get('startDate')?.hasError('required')" class="text-error">La fecha de inicio es obligatoria</mat-error>
+      <mat-error *ngIf="sprintForm.get('startDate')?.hasError('required')" class="text-error">{{'Fecha-inicio-required' | translate}}</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Fecha de fin</mat-label>
+      <mat-label>{{'Fecha-fin' | translate}}</mat-label>
       <input matInput [matDatepicker]="endDatePicker" formControlName="endDate">
       <mat-hint class="text-hint">MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="endDatePicker"></mat-datepicker-toggle>
       <mat-datepicker #endDatePicker></mat-datepicker>
-      <mat-error *ngIf="sprintForm.get('endDate')?.hasError('required')" class="text-error">La fecha de fin es obligatoria</mat-error>
+      <mat-error *ngIf="sprintForm.get('endDate')?.hasError('required')" class="text-error">{{'Fecha-fin-required' | translate}}</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Tareas</mat-label>
+      <mat-label>{{'Tareas' | translate}}</mat-label>
       <mat-select formControlName="tasks" multiple>
         <mat-option *ngFor="let task of availableTasks" [value]="task.id">{{ task.title }}</mat-option>
       </mat-select>
@@ -41,10 +41,10 @@
 
     <div class="row d-flex justify-content-center">
       <button mat-button type="submit" [disabled]="sprintForm.invalid" class="mt-2 col-6">
-        Crear Sprint
+        {{'Crear-sprint' | translate}}
       </button>
       <button mat-button (click)="goBackButton()" class="mt-2 ms-3 col-6 btn-cancel">
-        Cancelar
+        {{'Cancelar' | translate}}
       </button>
     </div>
   </form>

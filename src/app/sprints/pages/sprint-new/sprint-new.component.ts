@@ -31,11 +31,11 @@ export class SprintNewComponent implements OnInit {
     });
 
     this.tasksService.getTasks().subscribe(tasks => {
-      const subtasksIds = tasks.reduce((acc, task) => {
+      const subtasksIds = tasks.reduce((accumulator, task) => {
         if (task.subtasks && task.subtasks.length > 0) {
-          acc.push(...task.subtasks);
+          accumulator.push(...task.subtasks);
         }
-        return acc;
+        return accumulator;
       }, [] as number[]);
 
       this.availableTasks = tasks.filter(task => !subtasksIds.includes(task.id));

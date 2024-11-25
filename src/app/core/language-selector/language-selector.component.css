@@ -1,0 +1,18 @@
+.language-selector {
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+}
+
+.language-selector select {
+  padding: 4px;
+  border: none;
+  font-size: 1rem;
+  background-color: transparent;
+  cursor: pointer;
+  color: #fff;
+}
+
+.language-selector option {
+  background-color: #1e1e1e;
+}

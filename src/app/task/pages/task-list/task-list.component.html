@@ -1,21 +1,30 @@
 <div class="task-list mt-2 mb-2">
   <div class="search-bar col-12">
-    <input class="col-8" [formControl]="searchControl" placeholder="Buscar por título, asignado o prioridad" />
+    <input
+      class="col-8"
+      [formControl]="searchControl"
+      placeholder="{{'Buscar' | translate}}"
+    />
 
     <div class="category-filter col-2">
       <select [formControl]="categoryControl">
-        <option value="Todas">Todas</option>
-        <option *ngFor="let category of categories" [ngValue]="category">{{ category.name }}</option>
+        <option value="Todas">{{'Todas' | translate}}</option>
+        <option *ngFor="let category of categories" [ngValue]="category">
+          {{ category.name }}
+        </option>
       </select>
     </div>
-
-    <button class="col-2" (click)="clearFilters()">Limpiar Filtros</button>
+    <button class="col-2" (click)="clearFilters()">{{'Limpiar' | translate}}</button>
   </div>
 
   <div class="d-flex">
-    <div *ngFor="let status of taskStatuses; trackBy: trackStatus">
-      <task-column [tasks]="filteredTasks" [status]="status"></task-column>
-    </div>
+    <task-column
+      *ngFor="let status of taskStatuses; trackBy: trackStatus"
+      [tasks]="getTasksByStatus(status) | taskFilter:searchControl.value:categoryControl.value"
+      [status]="status"
+      [connectedLists]="taskStatuses"
+      [dropListId]="status"
+      (taskStatusChanged)="updateTask($event)"
+    ></task-column>
   </div>
-
 </div>
