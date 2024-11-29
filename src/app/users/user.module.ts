@@ -6,6 +6,8 @@ import { MaterialModule } from '../material/material.module';
 import { TaskRoutingModule } from './user-routing.module';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { UserDetailComponent } from './pages/user-detail/user-detail.component';
+import { RoleComponent } from './pages/role/role.component';
 
 @NgModule({
   imports: [
@@ -19,7 +21,9 @@ import { TranslateModule } from '@ngx-translate/core';
   exports: [],
   declarations: [
     UserNewComponent,
-    UserListComponent
+    UserListComponent,
+    UserDetailComponent,
+    RoleComponent
   ],
   providers: [],
 })

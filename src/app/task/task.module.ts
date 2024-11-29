@@ -14,6 +14,10 @@ import { TaskFormGenericComponent } from './shared/task-form-generic/task-form-g
 import { TaskFilterPipe } from './pipes/task-filter.pipe';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TranslateModule } from '@ngx-translate/core';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { taskReducer } from './task-store/task.reducer';
+import { TaskEffects } from './task-store/task.effects';
 
 
 @NgModule({
@@ -34,7 +38,9 @@ import { TranslateModule } from '@ngx-translate/core';
     TaskRoutingModule,
     MaterialModule,
     DragDropModule,
-    TranslateModule
+    TranslateModule,
+    StoreModule.forFeature('tasks', taskReducer),
+    EffectsModule.forFeature([TaskEffects]),
   ],
   providers: [
     TaskService

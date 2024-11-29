@@ -1,0 +1,54 @@
+.user-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  color: black;
+  background: rgb(255,109,93);
+  background: linear-gradient(45deg, rgba(255,109,93,1) 25%, rgba(0,134,134,1) 75%);
+}
+
+.user-form {
+  max-width: 70%;
+  height: auto;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.btn-primary {
+  width: 150px;
+  padding: 10px;
+  background-color: #fff;
+  color: #000 !important;
+  align-self: center;
+  margin-top: 16px;
+}
+
+button:disabled {
+  background-color: #939393;
+  color: #cfcfcf !important;
+}
+
+.text-error {
+  color: #fff;
+  font-size: 13px;
+}
+
+.text-primary-card {
+  color: white;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+

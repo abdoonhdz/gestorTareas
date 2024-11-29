@@ -72,7 +72,7 @@
     },
     {
       "title": "Despliegue a Producción",
-      "assignedTo": "Usuario 2",
+      "assignedTo": "Jose",
       "priority": "alta",
       "category": {
         "id": "d553",
@@ -145,22 +145,54 @@
   ],
   "users": [
     {
-      "id": "fd65",
+      "id": "5762be4e-6065-476d-bcf1-893099225b89",
+      "name": "Administrador",
+      "username": "admin",
+      "email": "admin@admin.com",
+      "password": "$2a$10$GfsDyyP3N1zFN1F7k6mjpeXhkjv3U4bRhRYYHXL4iK7lQwKR34uXm",
+      "role": {
+        "id": "1732640806497",
+        "name": "Administrador"
+      }
+    },
+    {
+      "id": "ce804bb5-c7b2-463e-b4c6-11529634608a",
       "name": "Abdón",
+      "username": "abdoonhdz",
       "email": "abdonhc70@gmail.com",
-      "password": "abdonhc70"
+      "password": "$2a$10$7HaRNsqnitrnjFrfN8jmYOglxDoOQu4aAWE3l4e/9qwKd3FgC41rq",
+      "role": {
+        "id": "1732696278830",
+        "name": "Jefe de Proyecto"
+      }
     },
     {
-      "id": "d200",
-      "name": "Usuario 2",
-      "email": "usuario@gmail.com",
-      "password": "contraseña"
+      "id": "b78163c3-ee7c-47cb-95f3-9c4d2b121f5c",
+      "name": "Jose",
+      "username": "jose",
+      "email": "jose@gmail.com",
+      "password": "$2a$10$XnNJyy6FONQcactMFaCG/OTjyHWveQs6gGd1drmIm1wPlzGli/3RG",
+      "role": {
+        "id": "1732703864801",
+        "name": "Desarrollador"
+      }
+    }
+  ],
+  "roles": [
+    {
+      "name": "Administrador",
+      "description": "Tendrá acceso a toda la aplicación al completo.",
+      "id": "1732640806497"
     },
     {
-      "id": "1e6fbbf6-3830-4bfc-856a-8866891e0a5b",
-      "name": "Thomas",
-      "email": "thoms123@gmail.com",
-      "password": "Thomas!1thomas"
+      "id": "1732696278830",
+      "name": "Jefe de Proyecto",
+      "description": "Tendrá acceso a todo excepto a la creación de usuarios y roles."
+    },
+    {
+      "name": "Desarrollador",
+      "description": "Tendrá acceso a ver tareas y actualizarlas.",
+      "id": "1732703864801"
     }
   ]
 }

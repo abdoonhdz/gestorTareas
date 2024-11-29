@@ -9,8 +9,16 @@ export class LanguageGuard implements CanActivate {
   constructor(private translate: TranslateService) {}
 
   canActivate(): boolean {
-    const savedLanguage = localStorage.getItem('language') || 'es';
-    this.translate.use(savedLanguage);
+    const storedLanguage = localStorage.getItem('language');
+
+    if (storedLanguage) {
+      this.translate.use(storedLanguage);
+    } else {
+      const defaultLanguage = 'es';
+      this.translate.use(defaultLanguage);
+      localStorage.setItem('language', defaultLanguage);
+    }
+
     return true;
   }
 }

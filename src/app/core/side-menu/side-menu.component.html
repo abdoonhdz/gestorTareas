@@ -4,36 +4,20 @@
   </mat-toolbar>
 
   <mat-nav-list>
-    <mat-list-item [routerLink]="['/tasks']" routerLinkActive="active">
-      <mat-icon matListItemIcon>list</mat-icon>
-      <span>{{ 'Lista' | translate }}</span>
-    </mat-list-item>
-
-    <mat-list-item [routerLink]="['/tasks/new']" routerLinkActive="active">
-      <mat-icon matListItemIcon>add</mat-icon>
-      <span>{{ 'Crear tarea' | translate}}</span>
-    </mat-list-item>
-
-    <mat-list-item [routerLink]="['/categories']" routerLinkActive="active">
-      <mat-icon matListItemIcon>category</mat-icon>
-      <span>{{ 'Categorias' | translate }}</span>
-    </mat-list-item>
-
-    <mat-list-item [routerLink]="['/sprints']" routerLinkActive="active">
-      <mat-icon matListItemIcon>watch</mat-icon>
-      <span>{{ 'Sprints' | translate}}</span>
-    </mat-list-item>
-
-    <mat-list-item [routerLink]="['/users']" routerLinkActive="active">
-      <mat-icon matListItemIcon>group</mat-icon>
-      <span>{{ 'Usuarios' | translate}}</span>
-    </mat-list-item>
+    <ng-container *ngFor="let item of sidebarItems">
+      <mat-list-item *ngIf="hasAccess(item.roles)" [routerLink]="[item.url]" routerLinkActive="active">
+        <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+        <span>{{ item.label | translate }}</span>
+      </mat-list-item>
+    </ng-container>
   </mat-nav-list>
 </mat-sidenav>
 
 <mat-toolbar>
   <span class="spacer"></span>
   <app-language-selector/>
-  <span>{{ 'Gestor de tareas' | translate }}</span>
-
+  <span>{{ name }}</span>
+  <button (click)="onLogout()" mat-icon-button>
+    <mat-icon>logout</mat-icon>
+  </button>
 </mat-toolbar>

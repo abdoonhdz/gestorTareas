@@ -27,7 +27,7 @@ export class SprintsService {
     return this.http.put<Sprint>(`${this.apiUrl}/${id}`, sprint);
   }
 
-  deleteSprint(id: number): Observable<void> {
+  deleteSprint(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 

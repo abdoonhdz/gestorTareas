@@ -1,0 +1,47 @@
+.main-unauthorized {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  color: black;
+}
+
+.unauthorized {
+  width: 70%;
+  height: auto;
+  padding: 40px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.text-primary-card {
+  color: #008686;
+}
+
+button {
+  width: 150px;
+  padding: 8px;
+  color: white !important;
+  margin-top: 16px;
+}
+
+.btn-cancel {
+  background-color: #ff6d5d;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  border: none;
+  transition: 0.3s ease-in-out;
+}
+
+.btn-cancel:hover {
+  background-color: #ff4b37;
+}
+
+p {
+  font-size: 18px;
+}

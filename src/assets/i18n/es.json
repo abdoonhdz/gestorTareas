@@ -8,7 +8,7 @@
   "Gestor de tareas": "Gestor de tareas",
   "Idioma": "Idioma",
   "Español": "Español",
-  "Ingles": "Inglés",
+  "Inglés": "Inglés",
   "Todas": "Todas",
   "Limpiar": "Limpiar Filtros",
   "Buscar": "Buscar por título, usuario o prioridad",
@@ -65,5 +65,8 @@
   "Correo-required": "Proporcione un correo válido",
   "Contraseña-required": "La contraseña es obligatoria",
   "Contraseña-validator": "La contraseña debe tener al menos 10 caracteres, incluyendo al menos 1 mayúscula, 1 minúscula, 1 número y 1 carácter especial.",
-  "Contraseña-match": "Las contraseñas no coinciden"
+  "Contraseña-match": "Las contraseñas no coinciden",
+  "Usuario": "Nombre de usuario",
+  "Usuario-required": "El nombre del usuario es obligatorio",
+  "Actualizar-usuario": "Actualizar usuario"
 }

@@ -1,0 +1,85 @@
+.role-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 250px);
+  margin-left: 250px;
+  height: 90vh;
+  box-sizing: border-box;
+  color: black;
+}
+
+.role-form {
+  width: 100%;
+  max-width: 70%;
+  padding: 40px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+mat-select {
+  width: 100%;
+}
+
+.btn-primary {
+  width: 150px;
+  padding: 10px;
+  background-color: #008686;
+  color: white !important;
+  align-self: center;
+  margin-top: 16px;
+}
+
+button:disabled {
+  background-color: #939393;
+  color: #cfcfcf !important;
+}
+
+.text-error {
+  color: #ff6d5d;
+  font-size: 13px;
+}
+
+.primary-color {
+  color: #008686;
+}
+
+.secondary-color {
+  color: #ff6d5d;
+}
+
+.text-primary-card {
+  color: #008686;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.btn-cancel {
+  width: 150px;
+  padding: 10px;
+  background-color: #ff6d5d !important;
+  margin-left: 16px;
+  color: white !important;
+  align-self: center;
+  margin-top: 16px;
+}
+
+.roles {
+  background-color: #fff;
+  margin-bottom: 10px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}

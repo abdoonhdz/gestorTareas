@@ -8,7 +8,7 @@
   "Gestor de tareas": "Task Manager",
   "Idioma": "Language",
   "Español": "Spanish",
-  "Ingles": "English",
+  "Inglés": "English",
   "Todas": "All",
   "Limpiar": "Clean Filters",
   "Buscar": "Search by title, user or priority",
@@ -65,6 +65,8 @@
   "Correo-required": "Provide a valid email",
   "Contraseña-required": "Password is required",
   "Contraseña-validator": "Password must be at least 10 characters, including at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character",
-  "Contraseña-match": "Passwords do not match"
-
+  "Contraseña-match": "Passwords do not match",
+  "Usuario": "Username",
+  "Usuario-required": "Username is required",
+  "Actualizar-usuario": "Update user"
 }

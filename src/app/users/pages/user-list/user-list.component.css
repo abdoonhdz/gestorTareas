@@ -68,6 +68,11 @@
   justify-content: space-between;
 }
 
+.card:hover {
+  cursor: pointer;
+  transform: scale(0.995);
+}
+
 .btn-eliminar {
   width: 50px;
   padding: 5px 10px;

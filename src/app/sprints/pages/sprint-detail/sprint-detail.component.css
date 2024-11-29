@@ -48,14 +48,18 @@ button {
   padding: 8px;
   color: white !important;
   margin-top: 16px;
-}
-
-.btn-cancel {
-  background-color: #ff6d5d;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   border: none;
   transition: 0.3s ease-in-out;
+}
+
+.btn-delete {
+  background-color: #008686;
+}
+
+.btn-cancel {
+  background-color: #ff6d5d;
 }
 
 .btn-cancel:hover {

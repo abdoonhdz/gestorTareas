@@ -14,6 +14,10 @@ import { HttpErrorInterceptor } from './core/interceptors/http-error.interceptor
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LanguageSelectorComponent } from './core/language-selector/language-selector.component';
+import { LoginComponent } from './auth/pages/login/login.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
+import { StoreModule } from '@ngrx/store';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -24,7 +28,10 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     SideMenuComponent,
-    LanguageSelectorComponent
+    LanguageSelectorComponent,
+    LoginComponent,
+    UnauthorizedComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +47,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    StoreModule.forRoot({}, {}),
   ],
   providers: [
     provideHttpClient(

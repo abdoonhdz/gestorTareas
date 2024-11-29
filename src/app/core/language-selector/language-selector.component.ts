@@ -11,15 +11,26 @@ export class LanguageSelectorComponent implements OnInit {
   languageControl: FormControl;
 
   constructor(private translate: TranslateService) {
-    this.languageControl = new FormControl('es');
+    this.languageControl = new FormControl(localStorage.getItem('language') || 'es');
   }
 
   ngOnInit(): void {
+    const currentLanguage = this.languageControl.value;
     this.translate.setDefaultLang('es');
-    this.translate.use(this.languageControl.value);
+    this.translate.use(currentLanguage);
+
+    localStorage.setItem('language', currentLanguage);
+
+    this.languageControl.valueChanges.subscribe((language) => {
+      this.translate.use(language);
+      localStorage.setItem('language', language);
+    });
   }
 
   onLanguageChange(): void {
-    this.translate.use(this.languageControl.value);
+    const selectedLanguage = this.languageControl.value;
+    this.translate.use(selectedLanguage);
+    localStorage.setItem('language', selectedLanguage);
   }
+
 }

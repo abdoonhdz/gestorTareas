@@ -32,6 +32,11 @@ export class UserListComponent implements OnInit{
     this.router.navigate(['/users/new']);
   }
 
+  viewUserDetail(userId: string): void {
+    this.router.navigate([`/users/${userId}`]);
+  }
+
+
   deleteUser(userId: string): void {
     Swal.fire({
       title: '¿Estás seguro?',

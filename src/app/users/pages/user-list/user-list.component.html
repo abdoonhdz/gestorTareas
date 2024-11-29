@@ -4,7 +4,7 @@
       <h2 class="mb-5">{{'Lista-usuarios' | translate}}</h2>
       <ul>
         <li *ngFor="let user of users" class="card">
-          {{ user.name }} - {{ user.email }}
+            <p class="mt-2" (click)="viewUserDetail(user.id)">{{ user.name }} - {{ user.email }}</p>
           <button mat-button (click)="deleteUser(user.id)" class="btn-eliminar">{{'Eliminar' | translate}}</button>
         </li>
       </ul>

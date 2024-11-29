@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { trigger, transition, style, animate, query, group } from '@angular/animations';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -30,31 +30,44 @@ import { TranslateService } from '@ngx-translate/core';
     ])
   ]
 })
-export class AppComponent implements OnInit{
-  title = 'gestorTareas';
+export class AppComponent implements OnInit {
+  title = 'Gestor de Tareas';
 
-  constructor(private translate: TranslateService) {
+  constructor(
+    private translate: TranslateService,
+    private router: Router
+  ) {
+    this.initializeLanguage();
+  }
 
+  ngOnInit() {}
+
+  private initializeLanguage(): void {
     const defaultLang = 'es';
     const supportedLanguages = ['en', 'es'];
 
-    translate.addLangs(supportedLanguages);
-    translate.setDefaultLang(defaultLang);
+    this.translate.addLangs(supportedLanguages);
+    this.translate.setDefaultLang(defaultLang);
 
-    const browserLang = this.translate.getBrowserLang() || defaultLang;
-    console.log('Idioma del navegador:', browserLang);
+    const savedLanguage = localStorage.getItem('language');
+    if (savedLanguage && supportedLanguages.includes(savedLanguage)) {
+      this.translate.use(savedLanguage);
+    } else {
+      const browserLang = this.translate.getBrowserLang() || defaultLang;
+      const languageToUse = supportedLanguages.includes(browserLang) ? browserLang : defaultLang;
+      this.translate.use(languageToUse);
+      localStorage.setItem('language', languageToUse);
+    }
 
-    const languageToUse = supportedLanguages.includes(browserLang) ? browserLang : defaultLang;
-    console.log('Idioma seleccionado:', languageToUse);
-    translate.use(languageToUse);
-  }
-
-  ngOnInit() {
-    const savedLanguage = localStorage.getItem('language') || 'es';
-    this.translate.use(savedLanguage);
   }
 
   prepareRoute(outlet: RouterOutlet) {
     return outlet?.activatedRouteData['animation'];
   }
+
+  shouldShowSideMenu(): boolean {
+    const excludedRoutes = ['/login', '/unauthorized'];
+    return !excludedRoutes.includes(this.router.url);
+  }
 }
+
