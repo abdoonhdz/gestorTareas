@@ -34,8 +34,7 @@ const routes: Routes = [
         'Administrador',
         'Jefe de Proyecto',
         'Desarrollador'
-      ],
-      animation: 'TasksPage'
+      ]
     }
   },
   {
@@ -46,8 +45,7 @@ const routes: Routes = [
       rolesAllowed: [
         'Administrador',
         'Jefe de Proyecto'
-      ],
-      animation: 'CategoriesPage'
+      ]
     }
   },
   {
@@ -58,8 +56,7 @@ const routes: Routes = [
       rolesAllowed: [
         'Administrador',
         'Jefe de Proyecto'
-      ],
-      animation: 'SprintsPage'
+      ]
     }
   },
   {
@@ -69,8 +66,7 @@ const routes: Routes = [
     data: {
       rolesAllowed: [
         'Administrador'
-      ],
-      animation: 'UsersPage'
+      ]
     }
   },
   {

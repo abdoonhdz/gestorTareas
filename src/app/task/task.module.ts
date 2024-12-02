@@ -17,7 +17,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { taskReducer } from './task-store/task.reducer';
-import { TaskEffects } from './task-store/task.effects';
+// import { TaskEffects } from './task-store/task.effects';
 
 
 @NgModule({
@@ -40,7 +40,7 @@ import { TaskEffects } from './task-store/task.effects';
     DragDropModule,
     TranslateModule,
     StoreModule.forFeature('tasks', taskReducer),
-    EffectsModule.forFeature([TaskEffects]),
+    // EffectsModule.forFeature([TaskEffects])
   ],
   providers: [
     TaskService

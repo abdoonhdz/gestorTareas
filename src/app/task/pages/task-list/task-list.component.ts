@@ -5,6 +5,10 @@ import { FormControl } from '@angular/forms';
 import { Categories } from '../../../categories/models/categories.model';
 import { TranslateService } from '@ngx-translate/core';
 
+import { updateTask } from '../../task-store/task.actions';
+import { Store } from '@ngrx/store';
+import { selectAllTasks } from '../../task-store/task.selectors';
+
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
@@ -19,7 +23,13 @@ export class TaskListComponent implements OnInit {
   selectedLanguage: string = '';
 
 
-  constructor(private taskService: TaskService, private translate: TranslateService, private cdr: ChangeDetectorRef) {
+  constructor(
+    private taskService: TaskService,
+    private translate: TranslateService,
+    private cdr: ChangeDetectorRef,
+    private store: Store
+)
+     {
     const browserLang = this.translate.getBrowserLang();
     this.selectedLanguage = browserLang || 'es';
     this.translate.use(this.selectedLanguage);
@@ -57,6 +67,9 @@ export class TaskListComponent implements OnInit {
   updateTask(task: Task): void {
     this.taskService.updateTask(task.id.toString(), task).subscribe(() => {
     });
+
+    // this.store.dispatch(updateTask({ task }));
+
   }
 
 

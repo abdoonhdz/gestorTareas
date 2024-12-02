@@ -15,15 +15,15 @@
       "id": "a123"
     },
     {
-      "title": "Revisión de Código",
+      "title": "Revisión del Código",
       "assignedTo": "Abdón",
-      "priority": "baja",
+      "priority": "media",
       "category": {
         "id": "22aa",
         "name": "Test"
       },
       "status": "en progreso",
-      "estimatedTime": "03:00",
+      "estimatedTime": "05:00",
       "description": "Realizar revisión del código entregado por el equipo de desarrollo.",
       "subtasks": [],
       "id": "b456"
@@ -50,7 +50,7 @@
         "id": "752a",
         "name": "Prueba"
       },
-      "status": "en progreso",
+      "status": "en pruebas",
       "estimatedTime": "05:00",
       "description": "Optimizar el backend para mejorar la respuesta de las API.",
       "subtasks": [],
@@ -64,7 +64,7 @@
         "id": "d553",
         "name": "Ejemplo"
       },
-      "status": "en pruebas",
+      "status": "completada",
       "estimatedTime": "01:30",
       "description": "Actualizar la documentación del proyecto con las últimas funcionalidades añadidas.",
       "subtasks": [],
@@ -78,7 +78,7 @@
         "id": "d553",
         "name": "Ejemplo"
       },
-      "status": "completada",
+      "status": "en progreso",
       "estimatedTime": "03:30",
       "description": "Desplegar la versión estable del sistema a producción.",
       "subtasks": [],
@@ -119,17 +119,6 @@
     }
   ],
   "sprints": [
-    {
-      "id": "c433",
-      "name": "Primer Sprint",
-      "description": "Este Sprint es el primero creado para la comprobación de su funcionamiento.",
-      "startDate": "2024-11-02T23:00:00.000Z",
-      "endDate": "2024-11-16T23:00:00.000Z",
-      "tasks": [
-        "d012",
-        "f678"
-      ]
-    },
     {
       "id": "7320",
       "name": "Segundo Sprint",
