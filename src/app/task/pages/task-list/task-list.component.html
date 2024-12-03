@@ -17,14 +17,15 @@
     <button class="col-2" (click)="clearFilters()">{{'Limpiar' | translate}}</button>
   </div>
 
-  <div class="d-flex">
-    <task-column
-      *ngFor="let status of taskStatuses; trackBy: trackStatus"
-      [tasks]="getTasksByStatus(status) | taskFilter:searchControl.value:categoryControl.value"
-      [status]="status"
-      [connectedLists]="taskStatuses"
-      [dropListId]="status"
-      (taskStatusChanged)="updateTask($event)"
-    ></task-column>
+  <div class="columns-container d-flex">
+    <div class="task-column-wrapper" *ngFor="let status of taskStatuses; trackBy: trackStatus">
+      <task-column
+        [tasks]="getTasksByStatus(status) | taskFilter:searchControl.value:categoryControl.value"
+        [status]="status"
+        [connectedLists]="taskStatuses"
+        [dropListId]="status"
+        (taskStatusChanged)="updateTask($event)"
+      ></task-column>
+    </div>
   </div>
 </div>

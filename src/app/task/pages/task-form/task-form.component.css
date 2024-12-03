@@ -20,4 +20,10 @@
   flex-direction: column;
 }
 
-
+@media (max-width: 1919px) {
+  .task-form-container {
+    padding-left: 0;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
