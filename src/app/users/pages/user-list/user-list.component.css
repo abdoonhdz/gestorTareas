@@ -3,7 +3,8 @@
   justify-content: center;
   align-items: center;
   width: calc(100% - 250px);
-  margin-left: 250px;
+  padding-left: 250px;
+  margin: 0 auto;
   height: 90vh;
   box-sizing: border-box;
   color: black;
@@ -19,6 +20,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .user-list {
@@ -66,6 +68,7 @@
   margin-top: 0.5rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .card:hover {
@@ -94,4 +97,78 @@ li {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+  .user-form {
+    max-width: 90%;
+    padding: 20px;
+  }
+
+  .btn-primary {
+    width: 120px;
+    padding: 8px;
+  }
+
+  .btn-eliminar {
+    width: 40px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .user-form-container {
+    padding-left: 0;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+  }
+
+  .user-form {
+    max-width: 100%;
+  }
+
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn-eliminar {
+    align-self: flex-end;
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-form {
+    padding: 10px;
+  }
+
+  .card {
+    padding: 10px;
+  }
+
+  .btn-primary {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .btn-eliminar {
+    width: 100%;
+    padding: 5px;
+    font-size: 12px;
+  }
+}
+
+
+@media (max-width: 1919px) {
+  .user-form-container {
+    padding-left: 0;
+    width: 100%;
+  }
 }

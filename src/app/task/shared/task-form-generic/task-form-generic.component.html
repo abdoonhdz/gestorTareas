@@ -78,7 +78,7 @@
     <mat-error *ngIf="taskForm.get('description')?.hasError('minlength')" class="text-error">{{'Min20-required' | translate}}</mat-error>
   </mat-form-field>
 
-  <div class="row d-flex justify-content-center">
+  <div class="row d-flex justify-content-center botones">
     <button mat-button type="submit" [disabled]="taskForm.invalid" class="mt-2 col-6">
       {{ taskId ? ('Actualizar' | translate) : ('Crear' | translate) }}
     </button>

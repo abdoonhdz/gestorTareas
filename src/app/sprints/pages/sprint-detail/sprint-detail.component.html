@@ -4,10 +4,10 @@
 
     <div class="arriba d-flex justify-content-between">
       <h2 class="col-6"><strong>{{ sprint.name }}</strong></h2>
-      <div class="fechas col-6 d-flex align-items-center text-center">
-        <p class="col-5 mt-2">{{ sprint.startDate | date }} </p>
-        <p class="col-2 mt-2"> ---- </p>
-        <p class="col-5 mt-2">{{ sprint.endDate | date }} </p>
+      <div class="fechas d-flex flex-wrap justify-content-center align-items-center">
+        <p class="text-center flex-fill">{{ sprint.startDate | date }}</p>
+        <p class="text-center flex-fill"> ---- </p>
+        <p class="text-center flex-fill">{{ sprint.endDate | date }}</p>
       </div>
     </div>
 

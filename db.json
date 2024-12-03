@@ -22,7 +22,7 @@
         "id": "22aa",
         "name": "Test"
       },
-      "status": "en progreso",
+      "status": "en pruebas",
       "estimatedTime": "05:00",
       "description": "Realizar revisión del código entregado por el equipo de desarrollo.",
       "subtasks": [],
@@ -50,7 +50,7 @@
         "id": "752a",
         "name": "Prueba"
       },
-      "status": "en pruebas",
+      "status": "completada",
       "estimatedTime": "05:00",
       "description": "Optimizar el backend para mejorar la respuesta de las API.",
       "subtasks": [],
@@ -64,7 +64,7 @@
         "id": "d553",
         "name": "Ejemplo"
       },
-      "status": "completada",
+      "status": "en progreso",
       "estimatedTime": "01:30",
       "description": "Actualizar la documentación del proyecto con las últimas funcionalidades añadidas.",
       "subtasks": [],

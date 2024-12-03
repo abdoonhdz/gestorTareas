@@ -121,3 +121,45 @@ button:hover:not(:disabled) {
 .categories-list button:hover {
   background-color: #ff321c;
 }
+
+@media (max-width: 1919px) {
+  .vista {
+    padding-left: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .vista {
+    padding-left: 0;
+    margin: 0;
+    min-height: auto;
+    padding: 15px;
+  }
+
+  .task-categories {
+    min-width: 100%;
+    padding: 15px;
+    border: none;
+    box-shadow: none;
+  }
+
+  form {
+    gap: 10px;
+  }
+
+  form input,
+  button {
+    width: 100%;
+  }
+
+  .categories-list li {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .categories-list button {
+    width: 100%;
+  }
+}

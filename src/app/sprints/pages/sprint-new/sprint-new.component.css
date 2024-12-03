@@ -3,9 +3,10 @@
   justify-content: center;
   align-items: center;
   width: calc(100% - 250px);
-  margin-left: 250px;
+  padding-left: 250px;
   height: 90vh;
   box-sizing: border-box;
+  margin: 0 auto;
 }
 
 .sprint-form {
@@ -64,4 +65,24 @@ button:disabled {
   color: #008686;
   margin-bottom: 20px;
   text-align: left;
+}
+
+
+@media (max-width: 1919px) {
+  .sprint-form-container {
+    padding-left: 0;
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 532px) {
+  button {
+    margin-left: 0 !important;
+  }
+
+  .botones {
+    display: flex;
+    flex-direction: column;
+  }
 }

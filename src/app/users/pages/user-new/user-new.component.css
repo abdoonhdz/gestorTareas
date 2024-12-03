@@ -3,7 +3,8 @@
   justify-content: center;
   align-items: center;
   width: calc(100% - 250px);
-  margin-left: 250px;
+  padding-left: 250px;
+  margin: 0 auto;
   height: 90vh;
   box-sizing: border-box;
   color: black;
@@ -58,4 +59,36 @@ button:disabled {
 .btn-cancel {
   background-color: #ff6d5d !important;
   margin-left: 16px;
+}
+
+@media (max-width: 1919px) {
+  .user-form-container {
+    padding-left: 0;
+    width: 100%;
+  }
+
+  .user-form {
+    max-width: 90%;
+    padding: 20px;
+  }
+}
+
+
+@media (max-width: 532px) {
+  button {
+    margin-left: 0 !important;
+  }
+
+  .botones {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .user-form {
+    padding: 10px;
+  }
+
+  mat-form-field {
+    margin-bottom: 12px;
+  }
 }

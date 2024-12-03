@@ -96,12 +96,12 @@
   flex-wrap: wrap;
   gap: 5px;
   justify-content: center;
-  width: 100%;
+  width: 107%;
 }
 
 .columns-container .task-column {
-  flex: 1 1 15%;
-  min-width: 15%;
+  flex: 1 1 22%;
+  min-width: 22%;
 }
 
 @media (max-width: 900px) {
