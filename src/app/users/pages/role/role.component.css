@@ -3,7 +3,8 @@
   justify-content: center;
   align-items: center;
   width: calc(100% - 250px);
-  margin-left: 250px;
+  padding-left: 250px;
+  margin: 0 auto;
   height: 90vh;
   box-sizing: border-box;
   color: black;
@@ -82,4 +83,64 @@ button:disabled {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+}
+
+@media (max-width: 1919px) {
+  .role-form-container {
+    padding-left: 0;
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 532px) {
+  button {
+    margin-left: 0 !important;
+  }
+
+  .botones-roles {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+@media (max-width: 1200px) {
+  .role-form-container {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+  }
+
+  .role-form {
+    padding: 20px;
+    box-shadow: none;
+  }
+
+  .btn-primary,
+  .btn-cancel {
+    width: 100%;
+  }
+
+  .roles {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .role-form {
+    max-width: 100%;
+  }
+
+  .btn-primary,
+  .btn-cancel {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .text-primary-card {
+    font-size: 20px;
+  }
 }

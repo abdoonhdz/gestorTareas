@@ -3,7 +3,8 @@
   justify-content: center;
   align-items: center;
   width: calc(100% - 250px);
-  margin-left: 250px;
+  padding-left: 250px;
+  margin: 0 auto;
   height: 90vh;
   box-sizing: border-box;
 }
@@ -43,13 +44,22 @@ button:disabled {
 }
 
 .text-error {
- color: #ff6d5d;
- font-size: 13px;
+  color: #ff6d5d;
+  font-size: 13px;
 }
 
 .text-primary-card {
   color: #008686;
 }
+
+
+@media (max-width: 1919px) {
+  .task-form-container {
+    padding-left: 0;
+    width: 100%;
+  }
+}
+
 
 @media (max-width: 532px) {
   button {

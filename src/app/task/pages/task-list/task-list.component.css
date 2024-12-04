@@ -99,11 +99,6 @@
   width: 107%;
 }
 
-.columns-container .task-column {
-  flex: 1 1 22%;
-  min-width: 22%;
-}
-
 @media (max-width: 900px) {
   .columns-container .task-column {
     flex: 1 1 100%;
