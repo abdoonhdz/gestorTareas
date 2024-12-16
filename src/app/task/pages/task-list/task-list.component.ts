@@ -67,9 +67,6 @@ export class TaskListComponent implements OnInit {
   updateTask(task: Task): void {
     this.taskService.updateTask(task.id.toString(), task).subscribe(() => {
     });
-
-    // this.store.dispatch(updateTask({ task }));
-
   }
 
 

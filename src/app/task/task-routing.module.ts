@@ -6,8 +6,8 @@ import { TaskFormComponent } from './pages/task-form/task-form.component';
 
 const routes: Routes = [
   { path: '', component: TaskListComponent},
-  { path: 'new', component: TaskFormComponent, data: { animation: 'TaskForm' }},
-  { path: 'edit/:id', component: TaskDetailComponent, data: { animation: 'TaskDetail' }},
+  { path: 'new', component: TaskFormComponent},
+  { path: 'edit/:id', component: TaskDetailComponent},
   { path: '**', redirectTo: '' }
 ];
 

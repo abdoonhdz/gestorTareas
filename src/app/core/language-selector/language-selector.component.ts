@@ -32,5 +32,4 @@ export class LanguageSelectorComponent implements OnInit {
     this.translate.use(selectedLanguage);
     localStorage.setItem('language', selectedLanguage);
   }
-
 }

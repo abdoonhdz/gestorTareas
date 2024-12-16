@@ -6,8 +6,8 @@ import { SprintNewComponent } from './pages/sprint-new/sprint-new.component';
 
 const routes: Routes = [
   { path: '', component: SprintListComponent},
-  { path: 'new', component: SprintNewComponent, data: { animation: 'SprintNew' }},
-  { path: ':id', component: SprintDetailComponent, data: { animation: 'SprintDetail' }},
+  { path: 'new', component: SprintNewComponent},
+  { path: ':id', component: SprintDetailComponent},
   { path: '**', redirectTo: '' }
 ];
 

@@ -19,6 +19,7 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { taskReducer } from './task/task-store';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -48,9 +49,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
-
+    StoreModule.forRoot({ tasks: taskReducer }),
+    // EffectsModule.forRoot([TaskEffects]),
   ],
   providers: [
     provideHttpClient(

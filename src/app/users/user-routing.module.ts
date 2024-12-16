@@ -5,10 +5,10 @@ import { UserListComponent } from './pages/user-list/user-list.component';
 import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 
 const routes: Routes = [
-   { path: '', component: UserListComponent, data: { animation: 'UserList' }},
-   { path: 'new', component: UserNewComponent, data: { animation: 'UserNew' }},
-   { path: 'edit/:id', component: UserNewComponent, data: { animation: 'UserNew' }},
-   { path: ':id', component: UserDetailComponent, data: { animation: 'UserDetail' }},
+   { path: '', component: UserListComponent},
+   { path: 'new', component: UserNewComponent},
+   { path: 'edit/:id', component: UserNewComponent},
+   { path: ':id', component: UserDetailComponent},
    { path: '**', redirectTo: '' }
 ];
 
