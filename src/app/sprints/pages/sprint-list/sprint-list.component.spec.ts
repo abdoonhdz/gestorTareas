@@ -8,7 +8,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Sprint } from '../../models/sprint.model';
 import { TranslateModule } from '@ngx-translate/core';
 
-fdescribe('SprintListComponent', () => {
+describe('SprintListComponent', () => {
   let component: SprintListComponent;
   let fixture: ComponentFixture<SprintListComponent>;
   let mockSprintsService: jasmine.SpyObj<SprintsService>;

@@ -3,7 +3,7 @@ import { ConfirmDialogComponent } from './confirm-dialog.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
-fdescribe('ConfirmDialogComponent', () => {
+describe('ConfirmDialogComponent', () => {
   let component: ConfirmDialogComponent;
   let fixture: ComponentFixture<ConfirmDialogComponent>;
   let dialogRefSpy: jasmine.SpyObj<MatDialogRef<ConfirmDialogComponent>>;
