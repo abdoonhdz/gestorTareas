@@ -3,14 +3,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LanguageSelectorComponent } from './language-selector.component';
 
-fdescribe('LanguageSelectorComponent', () => {
+describe('LanguageSelectorComponent', () => {
   let component: LanguageSelectorComponent;
   let fixture: ComponentFixture<LanguageSelectorComponent>;
   let translateService: TranslateService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LanguageSelectorComponent ],
+      declarations: [LanguageSelectorComponent],
       imports: [ReactiveFormsModule, TranslateModule.forRoot()],
       providers: [TranslateService]
     }).compileComponents();

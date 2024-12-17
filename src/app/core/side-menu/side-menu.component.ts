@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./side-menu.component.css'],
 })
 export class SideMenuComponent {
-  sidenavOpened: boolean = window.innerWidth >= 1920; // Se abre solo si el ancho inicial es mayor o igual a 1920px
-  isScreenSmall: boolean = window.innerWidth < 1920; // Detecta si la pantalla es pequeña
+  sidenavOpened: boolean = window.innerWidth >= 1920;
+  isScreenSmall: boolean = window.innerWidth < 1920;
   name: string | null = null;
   userRole: string = '';
   selectedLanguage: string = '';
@@ -31,32 +31,27 @@ export class SideMenuComponent {
     this.checkScreenSize();
   }
 
-  // Cambia el idioma seleccionado
   changeLanguage(language: string): void {
     this.translate.use(language);
     localStorage.setItem('language', language);
     this.selectedLanguage = language;
   }
 
-  // Cierra sesión
   onLogout(): void {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
 
-  // Alterna la visibilidad del sidenav
   toggleSidenav(): void {
     this.sidenavOpened = !this.sidenavOpened;
   }
 
-  // Detecta cambios en el tamaño de la pantalla
   @HostListener('window:resize', ['$event'])
   checkScreenSize(): void {
     this.isScreenSmall = window.innerWidth < 1920;
     this.sidenavOpened = !this.isScreenSmall;
   }
 
-  // Verifica el acceso a elementos según roles
   hasAccess(roles: string[]): boolean {
     return roles.includes(this.userRole);
   }
