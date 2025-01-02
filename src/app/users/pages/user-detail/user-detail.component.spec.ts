@@ -8,7 +8,7 @@ import { User } from '../../models/user.model';
 import { AppModule } from '../../../app.module';
 import { TranslateModule } from '@ngx-translate/core';
 
-fdescribe('UserDetailComponent', () => {
+describe('UserDetailComponent', () => {
   let component: UserDetailComponent;
   let fixture: ComponentFixture<UserDetailComponent>;
   let mockUsersService: jasmine.SpyObj<UsersService>;
@@ -29,7 +29,7 @@ fdescribe('UserDetailComponent', () => {
         { provide: ActivatedRoute, useValue: mockActivatedRoute }
       ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(UserDetailComponent);
     component = fixture.componentInstance;

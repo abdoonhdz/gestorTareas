@@ -10,16 +10,16 @@ import { Role } from '../../models/role.model';
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.css'
 })
-export class UserDetailComponent implements OnInit{
+export class UserDetailComponent implements OnInit {
 
   user!: User;
 
-  constructor (
+  constructor(
     private route: ActivatedRoute,
     private router: Router,
     private usersService: UsersService,
     private rolesService: RolesService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     const userId = this.route.snapshot.paramMap.get('id')!;
@@ -33,8 +33,13 @@ export class UserDetailComponent implements OnInit{
     this.router.navigate(['/users']);
   }
 
-  goUpdate(): void {
-    this.router.navigate(['/users/edit', this.user.id])
+  goUpdate() {
+    if (this.user) {
+      this.router.navigate(['/users/edit', this.user.id]);
+    } else {
+      console.error('User is undefined');
+    }
   }
+
 
 }

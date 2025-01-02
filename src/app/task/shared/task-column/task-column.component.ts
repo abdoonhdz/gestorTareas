@@ -7,7 +7,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
   templateUrl: './task-column.component.html',
   styleUrls: ['./task-column.component.css']
 })
-export class TaskColumnComponent implements OnInit{
+export class TaskColumnComponent implements OnInit {
   @Input() tasks: Task[] = [];
   @Input() status!: Task['status'];
   @Input() connectedLists: string[] = [];
