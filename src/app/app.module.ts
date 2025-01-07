@@ -20,6 +20,8 @@ import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.c
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { taskReducer } from './task/task-store';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -36,6 +38,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     ConfirmDialogComponent
   ],
   imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MaterialModule,
     BrowserModule,
     AppRoutingModule,
     TaskModule,

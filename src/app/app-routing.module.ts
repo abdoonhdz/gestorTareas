@@ -12,8 +12,7 @@ const routes: Routes = [
     path: 'login', component: LoginComponent
   },
   {
-    path: 'unauthorized',
-    component: UnauthorizedComponent
+    path: 'unauthorized', component: UnauthorizedComponent
   },
   {
     path: 'roles',

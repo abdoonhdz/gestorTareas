@@ -1,7 +1,7 @@
 <mat-sidenav-container fullscreen class="fondo-blanco">
   <side-menu *ngIf="shouldShowSideMenu()"></side-menu>
 
-  <div class="content-container">
+  <div class="content-container" [@routeAnimations]="prepareRoute(outlet)">
     <router-outlet #outlet="outlet"></router-outlet>
   </div>
 </mat-sidenav-container>

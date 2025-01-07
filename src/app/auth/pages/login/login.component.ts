@@ -19,9 +19,11 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   ngOnInit(): void {
+    console.log('LoginComponent inicializado');
+
     this.loginForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
       password: ['', [Validators.required, Validators.minLength(6)]]

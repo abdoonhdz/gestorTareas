@@ -97,6 +97,7 @@ button:hover:not(:disabled) {
 
 .categories-list li {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
@@ -154,12 +155,12 @@ button:hover:not(:disabled) {
   }
 
   .categories-list li {
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
     text-align: center;
   }
 
   .categories-list button {
-    width: 100%;
+    width: 25%;
   }
 }
