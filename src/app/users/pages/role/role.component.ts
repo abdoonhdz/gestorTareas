@@ -16,13 +16,16 @@ export class RoleComponent implements OnInit {
   roleForm!: FormGroup;
   editingRoleId: string | null = null;
 
-  constructor(private rolesService: RolesService, private fb: FormBuilder) {}
+  constructor(private rolesService: RolesService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.loadRoles();
     this.initializeForm();
   }
 
+  reloadPage(): void {
+    window.location.reload();
+  }
   loadRoles(): void {
     this.rolesService.getRoles().subscribe((roles) => {
       this.roles = roles;
@@ -35,6 +38,7 @@ export class RoleComponent implements OnInit {
       description: ['', [Validators.required, Validators.minLength(10)]]
     });
   }
+
 
   onSubmit(): void {
     if (this.roleForm.invalid) {
@@ -59,7 +63,7 @@ export class RoleComponent implements OnInit {
           confirmButtonText: 'Aceptar',
           showCancelButton: false,
         }).then(() => {
-          window.location.reload();
+          this.reloadPage(); // Llama al método encapsulado
         });
       });
     } else {
@@ -73,11 +77,12 @@ export class RoleComponent implements OnInit {
           confirmButtonText: 'Aceptar',
           showCancelButton: false,
         }).then(() => {
-          window.location.reload();
+          this.reloadPage(); // Llama al método encapsulado
         });
       });
     }
   }
+
 
 
   onEdit(role: Role): void {

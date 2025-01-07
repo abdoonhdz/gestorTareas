@@ -36,7 +36,7 @@ describe('UserDetailComponent', () => {
   });
 
   describe('goBack', () => {
-    it('should navigate back to users list', () => {
+    it('debería navegar de regreso a la lista de usuarios', () => {
       component.goBack();
 
       expect(mockRouter.navigate).toHaveBeenCalledWith(['/users']);
@@ -44,7 +44,7 @@ describe('UserDetailComponent', () => {
   });
 
   describe('goUpdate', () => {
-    it('should navigate to the update user page if user is defined', () => {
+    it('debería navegar a la página de actualización de usuario si el usuario está definido', () => {
       component.user = {
         id: '1',
         name: 'John Doe',
@@ -61,7 +61,7 @@ describe('UserDetailComponent', () => {
       expect(mockRouter.navigate).toHaveBeenCalledWith(['/users/edit', '1']);
     });
 
-    it('should not navigate if user is undefined', () => {
+    it('no debería navegar si el usuario no está definido', () => {
       component.goUpdate();
       expect(mockRouter.navigate).not.toHaveBeenCalled();
     });

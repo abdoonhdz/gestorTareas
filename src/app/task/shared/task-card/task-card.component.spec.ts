@@ -53,8 +53,8 @@ describe('TaskCardComponent', () => {
     component.task = mockTask;
   });
 
-  describe('showTaskDetails', () => {
-    it('should open the task details dialog with correct data', () => {
+  describe('showTasksDetails', () => {
+    it('debería abrir el cuadro de diálogo con los datos correctos', () => {
       const mockDialogRef = { afterClosed: () => of({ action: 'edit', task: mockTask }) };
       dialogSpy.open.and.returnValue(mockDialogRef as MatDialogRef<TaskDetailsDialogComponent>);
 
@@ -75,7 +75,7 @@ describe('TaskCardComponent', () => {
   });
 
   describe('deleteTask', () => {
-    it('should call deleteTask and emit taskDeleted on success', () => {
+    it('debería llamar a deleteTask y emitir taskDeleted en caso de éxito', () => {
       const mockDialogRef = { afterClosed: () => of({ action: 'delete' }) };
       dialogSpy.open.and.returnValue(mockDialogRef as MatDialogRef<TaskDetailsDialogComponent>);
       taskServiceSpy.deleteTask.and.returnValue(of(undefined));
@@ -101,7 +101,7 @@ describe('TaskCardComponent', () => {
       expect(taskDeletedSpy).toHaveBeenCalledWith(mockTask.id);
     });
 
-    it('should show an error message if deleteTask fails', () => {
+    it('debería mostrar un mensaje de error si deleteTask falla', () => {
       const mockDialogRef = { afterClosed: () => of({ action: 'delete' }) };
       dialogSpy.open.and.returnValue(mockDialogRef as MatDialogRef<TaskDetailsDialogComponent>);
       taskServiceSpy.deleteTask.and.returnValue(throwError(() => new Error('Error al eliminar')));
@@ -119,7 +119,7 @@ describe('TaskCardComponent', () => {
       expect(taskDeletedSpy).not.toHaveBeenCalled();
     });
 
-    it('should do nothing if dialog is closed without confirming delete', () => {
+    it('debería no hacer nada si el cuadro de diálogo se cierra sin confirmar la eliminación', () => {
       const mockDialogRef = { afterClosed: () => of(null) };
       dialogSpy.open.and.returnValue(mockDialogRef as MatDialogRef<TaskDetailsDialogComponent>);
 

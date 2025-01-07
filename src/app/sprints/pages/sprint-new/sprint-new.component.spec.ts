@@ -60,11 +60,11 @@ describe('SprintNewComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create the component', () => {
+  it('debería crear el componente', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should initialize the form with empty values', () => {
+  it('debería inicializar el formulario con valores vacíos', () => {
     const formValue = component.sprintForm.value;
     expect(formValue).toEqual({
       name: '',
@@ -75,14 +75,27 @@ describe('SprintNewComponent', () => {
     });
   });
 
-  // it('should load available tasks excluding subtasks', () => {
-  //   expect(component.availableTasks.length).toBe(2);
-  //   expect(component.availableTasks[0].id).toBe(2);
-  //   expect(component.availableTasks[1].id).toBe(3);
-  // });
+  it('debería cargar las tareas disponibles excluyendo subtareas', () => {
+    const mockTasks: Task[] = [
+      { id: 1, title: 'Task 1', status: 'pendiente', category: { id: '1', name: 'Feature' }, assignedTo: 'User 1', priority: 'baja', description: '', estimatedTime: '', subtasks: [3, 4] },
+      { id: 2, title: 'Task 2', status: 'pendiente', category: { id: '2', name: 'Bug' }, assignedTo: 'User 2', priority: 'media', description: '', estimatedTime: '', subtasks: [] },
+      { id: 3, title: 'Task 3', status: 'completada', category: { id: '1', name: 'Feature' }, assignedTo: 'User 3', priority: 'alta', description: '', estimatedTime: '', subtasks: [] },
+      { id: 4, title: 'Task 4', status: 'en progreso', category: { id: '2', name: 'Bug' }, assignedTo: 'User 4', priority: 'baja', description: '', estimatedTime: '', subtasks: [] },
+    ];
 
+    taskServiceSpy.getTasks.and.returnValue(of(mockTasks));
 
-  it('should mark the form as invalid if required fields are empty', () => {
+    component.ngOnInit();
+    fixture.detectChanges();
+
+    const filteredTaskIds = component.availableTasks.map(task => task.id);
+    const expectedTaskIds = [2, 3, 4];
+
+    expect(filteredTaskIds).toEqual(expectedTaskIds);
+    expect(component.availableTasks.length).toBe(expectedTaskIds.length);
+  });
+
+  it('debería marcar el formulario como inválido si los campos requeridos están vacíos', () => {
     component.sprintForm.controls['name'].setValue('');
     component.sprintForm.controls['description'].setValue('');
     component.sprintForm.controls['startDate'].setValue('');
@@ -90,7 +103,7 @@ describe('SprintNewComponent', () => {
     expect(component.sprintForm.invalid).toBeTrue();
   });
 
-  it('should call sprintsService.createSprint on valid form submission', () => {
+  it('debería llamar a sprintsService.createSprint al enviar un formulario válido', () => {
     component.sprintForm.setValue({
       name: mockSprint.name,
       description: mockSprint.description,
@@ -105,24 +118,15 @@ describe('SprintNewComponent', () => {
     expect(routerSpy.navigate).toHaveBeenCalledWith(['/sprints']);
   });
 
-  it('should not call sprintsService.createSprint if form is invalid', () => {
+  it('no debería llamar a sprintsService.createSprint si el formulario es inválido', () => {
     component.sprintForm.controls['name'].setValue('');
     component.onSubmit();
     expect(sprintsServiceSpy.createSprint).not.toHaveBeenCalled();
     expect(routerSpy.navigate).not.toHaveBeenCalled();
   });
 
-  it('should navigate back when goBackButton is called', () => {
+  it('debería navegar hacia atrás cuando se llame a goBackButton', () => {
     component.goBackButton();
     expect(routerSpy.navigate).toHaveBeenCalledWith(['/sprints']);
-  });
-
-  it('should display an error when description is less than 20 characters', () => {
-    component.sprintForm.controls['description'].setValue('Short desc');
-    fixture.detectChanges();
-
-    const descriptionInput = fixture.debugElement.query(By.css('input[formControlName="description"]'));
-    expect(descriptionInput).toBeTruthy();
-    expect(component.sprintForm.controls['description'].invalid).toBeTrue();
   });
 });

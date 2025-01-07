@@ -28,7 +28,7 @@ describe('UsersComponent', () => {
     router = TestBed.inject(Router);
   });
 
-  it('should load users', () => {
+  it('debería cargar usuarios', () => {
     const dummyUsers = [{ id: '1', name: 'John' }];
 
     const users: User[] = dummyUsers as User[];
@@ -41,7 +41,7 @@ describe('UsersComponent', () => {
     expect(component.users).toEqual(users);
   });
 
-  it('should navigate to create new user', () => {
+  it('debería navegar para crear un usuario nuevo', () => {
     const navigateSpy = spyOn(router, 'navigate');
 
     component.createAction();
@@ -50,7 +50,7 @@ describe('UsersComponent', () => {
     expect(navigateSpy).toHaveBeenCalledWith(['/users/new']);
   });
 
-  it('should navigate to user detail', () => {
+  it('debería navegar a los detalles del usuario', () => {
     const userId = '1';
     const navigateSpy = spyOn(router, 'navigate');
 

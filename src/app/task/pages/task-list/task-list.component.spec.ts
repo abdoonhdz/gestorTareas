@@ -41,15 +41,15 @@ describe('TaskListComponent', () => {
   });
 
   describe('updateTask', () => {
-    it('should call updateTask on TaskService with correct arguments', () => {
-      const task = { id: 1, title: 'Test Task' } as any;
+    it('debería llamar a updateTask en TaskService con los argumentos correctos', () => {
+      const task = { id: 1, title: 'Tarea de Prueba' } as any;
       component.updateTask(task);
       expect(taskServiceStub.updateTask).toHaveBeenCalledWith('1', task);
     });
   });
 
   describe('trackStatus', () => {
-    it('should return the status as a string', () => {
+    it('debería devolver el estado como una cadena', () => {
       const status = 'pendiente';
       const result = component.trackStatus(0, status);
       expect(result).toBe(status);
@@ -57,7 +57,7 @@ describe('TaskListComponent', () => {
   });
 
   describe('getTasksByStatus', () => {
-    it('should return tasks filtered by status', () => {
+    it('debería devolver las tareas filtradas por estado', () => {
       const status = 'completada';
       const filteredTasks = component.getTasksByStatus(status);
       expect(filteredTasks).toEqual(component.tasks.filter(task => task.status === status));
@@ -65,9 +65,9 @@ describe('TaskListComponent', () => {
   });
 
   describe('clearFilters', () => {
-    it('should reset filters to default values', () => {
+    it('debería reiniciar los filtros a los valores predeterminados', () => {
       component.categoryControl.setValue('Progreso');
-      component.searchControl.setValue('Test');
+      component.searchControl.setValue('Prueba');
       component.clearFilters();
       expect(component.categoryControl.value).toBe('Todas');
       expect(component.searchControl.value).toBe('');

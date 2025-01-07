@@ -22,11 +22,11 @@ describe('UnauthorizedComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('debería crear el componente', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should navigate to /tasks when goBack is called', () => {
+  it('debería navegar a /tasks cuando se llame a goBack', () => {
     component.goBack();
     expect(router.navigate).toHaveBeenCalledWith(['/tasks']);
   });

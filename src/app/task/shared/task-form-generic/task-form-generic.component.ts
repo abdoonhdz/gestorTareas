@@ -30,7 +30,7 @@ export class TaskFormGenericComponent implements OnInit {
     private fb: FormBuilder,
     private taskService: TaskService,
     private router: Router,
-    private usersService : UsersService ,
+    private usersService: UsersService,
     private categoriesService: CategoriesService
   ) {
     this.taskForm = this.fb.group({

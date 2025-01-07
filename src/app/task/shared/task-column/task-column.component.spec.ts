@@ -4,7 +4,7 @@ import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 import { Task } from '../../models/task.model';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-fdescribe('TaskColumnComponent', () => {
+describe('TaskColumnComponent', () => {
   let component: TaskColumnComponent;
   let fixture: ComponentFixture<TaskColumnComponent>;
 
@@ -30,60 +30,60 @@ fdescribe('TaskColumnComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('debería crear el componente', () => {
     expect(component).toBeTruthy();
   });
 
   describe('#handleTaskDeleted', () => {
-    it('should remove a task by ID', () => {
+    it('debería eliminar una tarea por ID', () => {
       component.handleTaskDeleted(1);
       expect(component.tasks.some(task => task.id === 1)).toBeFalse();
     });
 
-    it('should not remove tasks if ID is not found', () => {
+    it('no debería eliminar ninguna tarea si el ID no se encuentra', () => {
       component.handleTaskDeleted(99);
       expect(component.tasks.length).toBe(3);
     });
   });
 
   describe('#isNotSubtask', () => {
-    it('should return true for tasks that are not subtasks', () => {
+    it('debería devolver verdadero para tareas que no son subtareas', () => {
       expect(component.isNotSubtask(mockTasks[0])).toBeTrue();
     });
 
-    it('should return false for tasks that are subtasks', () => {
+    it('debería devolver falso para tareas que son subtareas', () => {
       expect(component.isNotSubtask(mockTasks[2])).toBeFalse();
     });
   });
 
   describe('#isSubtask', () => {
-    it('should return true if the task is a subtask', () => {
+    it('debería devolver verdadero si la tarea es una subtarea', () => {
       expect(component.isSubtask(mockTasks[2])).toBeTrue();
     });
 
-    it('should return false if the task is not a subtask', () => {
+    it('debería devolver falso si la tarea no es una subtarea', () => {
       expect(component.isSubtask(mockTasks[0])).toBeFalse();
     });
   });
 
   describe('#trackByTaskId', () => {
-    it('should return the task ID', () => {
+    it('debería devolver el ID de la tarea', () => {
       expect(component.trackByTaskId(0, mockTasks[0])).toBe(1);
     });
   });
 
   describe('#isEpic', () => {
-    it('should return true if the task is an epic', () => {
+    it('debería devolver verdadero si la tarea es una épica', () => {
       expect(component.isEpic(mockTasks[1])).toBeTrue();
     });
 
-    it('should return false if the task is not an epic', () => {
+    it('debería devolver falso si la tarea no es una épica', () => {
       expect(component.isEpic(mockTasks[0])).toBeFalse();
     });
   });
 
   describe('#onDrop', () => {
-    it('should reorder tasks within the same container', () => {
+    it('debería reordenar las tareas dentro del mismo contenedor', () => {
       const event = {
         previousContainer: { data: component.tasks, id: 'pendingList' },
         container: { data: component.tasks, id: 'pendingList' },
@@ -97,7 +97,7 @@ fdescribe('TaskColumnComponent', () => {
       expect(component.tasks[2].id).toBe(1);
     });
 
-    it('should transfer task to a different container', () => {
+    it('debería transferir una tarea a un contenedor diferente', () => {
       const otherTasks: Task[] = [];
       const event = {
         previousContainer: { data: component.tasks, id: 'pendingList' },

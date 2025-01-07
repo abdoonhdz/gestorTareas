@@ -21,7 +21,7 @@ export class TaskDetailsDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: { task?: Task; tasks?: Task[]; action: string },
     private router: Router,
     private taskService: TaskService,
-    private dialog: MatDialog
+    public dialog: MatDialog
   ) {
     this.action = data.action;
   }

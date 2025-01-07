@@ -3,7 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LanguageSelectorComponent } from './language-selector.component';
 
-describe('LanguageSelectorComponent', () => {
+describe('Componente LanguageSelector', () => {
   let component: LanguageSelectorComponent;
   let fixture: ComponentFixture<LanguageSelectorComponent>;
   let translateService: TranslateService;
@@ -12,7 +12,7 @@ describe('LanguageSelectorComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [LanguageSelectorComponent],
       imports: [ReactiveFormsModule, TranslateModule.forRoot()],
-      providers: [TranslateService]
+      providers: [TranslateService],
     }).compileComponents();
   });
 
@@ -23,11 +23,11 @@ describe('LanguageSelectorComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('debería crear el componente', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should initialize with current language from localStorage or default to "es"', () => {
+  it('debería inicializarse con el idioma actual de localStorage o por defecto con "es"', () => {
     spyOn(localStorage, 'getItem').and.returnValue('es');
     component.ngOnInit();
     expect(component.languageControl.value).toBe('es');
@@ -36,28 +36,28 @@ describe('LanguageSelectorComponent', () => {
     expect(component.languageControl.value).toBe('en');
   });
 
-  it('should update language when form control changes', () => {
+  it('debería actualizar el idioma cuando cambia el control del formulario', () => {
     spyOn(translateService, 'use').and.callThrough();
     component.languageControl.setValue('en');
     fixture.detectChanges();
     expect(translateService.use).toHaveBeenCalledWith('en');
   });
 
-  it('should translate language options correctly', () => {
+  it('debería traducir correctamente las opciones de idioma', () => {
     const compiled = fixture.nativeElement;
     const options = compiled.querySelectorAll('option');
     expect(options[0].textContent.trim()).toBe('Español');
     expect(options[1].textContent.trim()).toBe('Inglés');
   });
 
-  it('should set the language based on user selection', () => {
+  it('debería establecer el idioma basado en la selección del usuario', () => {
     spyOn(localStorage, 'setItem').and.callThrough();
     component.languageControl.setValue('en');
     expect(localStorage.setItem).toHaveBeenCalledWith('language', 'en');
     expect(component.languageControl.value).toBe('en');
   });
 
-  it('should handle language change events correctly', () => {
+  it('debería manejar correctamente los eventos de cambio de idioma', () => {
     spyOn(translateService, 'use').and.callThrough();
     component.onLanguageChange();
     expect(translateService.use).toHaveBeenCalled();

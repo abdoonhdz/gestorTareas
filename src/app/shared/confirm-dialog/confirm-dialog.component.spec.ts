@@ -28,21 +28,21 @@ describe('ConfirmDialogComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('debería crear el componente', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should initialize with the correct title and message', () => {
+  it('debería inicializarse con el título y mensaje correctos', () => {
     expect(component.data.title).toBe('Test Title');
     expect(component.data.message).toBe('Test Message');
   });
 
-  it('should close the dialog with true when onConfirm is called', () => {
+  it('debería cerrar el diálogo con true cuando se llame a onConfirm', () => {
     component.onConfirm();
     expect(dialogRefSpy.close).toHaveBeenCalledWith(true);
   });
 
-  it('should close the dialog with false when onCancel is called', () => {
+  it('debería cerrar el diálogo con false cuando se llame a onCancel', () => {
     component.onCancel();
     expect(dialogRefSpy.close).toHaveBeenCalledWith(false);
   });

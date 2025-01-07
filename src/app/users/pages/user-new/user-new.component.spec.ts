@@ -1,155 +1,146 @@
-// import { ComponentFixture, TestBed } from '@angular/core/testing';
-// import { UserNewComponent } from './user-new.component';
-// import { UsersService } from '../../services/users.service';
-// import { ReactiveFormsModule } from '@angular/forms';
-// import { of } from 'rxjs';
-// import { User } from '../../models/user.model';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { UserNewComponent } from './user-new.component';
+import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { of } from 'rxjs';
+import { UsersService } from '../../services/users.service';
+import { RolesService } from '../../services/roles.service';
+import { User } from '../../models/user.model';
+import { Role } from '../../models/role.model';
+import Swal from 'sweetalert2';
+import { MaterialModule } from '../../../material/material.module';
+import { AppModule } from '../../../app.module';
+import { TranslateModule } from '@ngx-translate/core';
 
-// describe('UserNewComponent', () => {
-//   let component: UserNewComponent;
-//   let fixture: ComponentFixture<UserNewComponent>;
-//   let usersService: UsersService;
+describe('UserNewComponent', () => {
+  let component: UserNewComponent;
+  let fixture: ComponentFixture<UserNewComponent>;
+  let usersServiceSpy: jasmine.SpyObj<UsersService>;
+  let rolesServiceSpy: jasmine.SpyObj<RolesService>;
+  let routerSpy: jasmine.SpyObj<Router>;
+  let activatedRouteSpy: Partial<ActivatedRoute>;
 
-//   beforeEach(() => {
-//     TestBed.configureTestingModule({
-//       imports: [ReactiveFormsModule],
-//       declarations: [UserNewComponent],
-//       providers: [UsersService]
-//     }).compileComponents();
+  const mockRoles: Role[] = [
+    { id: '1', name: 'Admin', description: 'Rol de administrador' },
+    { id: '2', name: 'User', description: 'Rol de usuario' },
+  ];
 
-//     fixture = TestBed.createComponent(UserNewComponent);
-//     component = fixture.componentInstance;
-//     usersService = TestBed.inject(UsersService);
-//     fixture.detectChanges();
-//   });
+  const mockUser: User = {
+    id: '123',
+    name: 'Usuario de prueba',
+    username: 'usuarioprueba',
+    email: 'usuarioprueba@example.com',
+    role: { id: '1', name: 'Admin' },
+    password: 'Prueba@1234',
+  };
 
-//   describe('createUser method', () => {
-//     it('should call createUser with a valid user object', () => {
-//       const user: User = {
-//         id: '1',
-//         name: 'Test User',
-//         username: 'testuser',
-//         email: 'testuser@example.com',
-//         role: {
-//           id: '1',
-//           name: 'Admin'
-//         },
-//         password: 'securepassword'
-//       };
+  beforeEach(async () => {
+    usersServiceSpy = jasmine.createSpyObj('UsersService', ['getUserById', 'createUser', 'updateUser']);
+    rolesServiceSpy = jasmine.createSpyObj('RolesService', ['getRoles']);
+    routerSpy = jasmine.createSpyObj('Router', ['navigate']);
 
-//       spyOn(usersService, 'createUser').and.returnValue(of(user));
+    activatedRouteSpy = {
+      snapshot: {
+        paramMap: {
+          get: jasmine.createSpy('get').and.callFake((key: string) => (key === 'id' ? '123' : null)),
+          has: jasmine.createSpy('has').and.returnValue(true),
+          getAll: jasmine.createSpy('getAll').and.returnValue([]),
+          keys: [],
+        } as ParamMap,
+        url: [],
+        params: {},
+        queryParams: {},
+        fragment: null,
+        data: {},
+        outlet: '',
+        component: null,
+        routeConfig: null,
+        root: {} as any,
+        parent: null,
+        firstChild: null,
+        children: [],
+        title: undefined,
+        pathFromRoot: [],
+        queryParamMap: {
+          get: jasmine.createSpy('get').and.returnValue(null),
+          has: jasmine.createSpy('has').and.returnValue(false),
+          getAll: jasmine.createSpy('getAll').and.returnValue([]),
+          keys: [],
+        } as ParamMap,
+      },
+    };
 
-//       component.createUser(user);
+    await TestBed.configureTestingModule({
+      declarations: [UserNewComponent],
+      imports: [ReactiveFormsModule, MaterialModule, AppModule, TranslateModule.forRoot()],
+      providers: [
+        FormBuilder,
+        { provide: UsersService, useValue: usersServiceSpy },
+        { provide: RolesService, useValue: rolesServiceSpy },
+        { provide: Router, useValue: routerSpy },
+        { provide: ActivatedRoute, useValue: activatedRouteSpy },
+      ],
+    }).compileComponents();
+  });
 
-//       expect(usersService.createUser).toHaveBeenCalledWith(user);
-//     });
+  beforeEach(() => {
+    fixture = TestBed.createComponent(UserNewComponent);
+    component = fixture.componentInstance;
 
-//     it('should handle error if required properties are missing', () => {
-//       const user: Partial<User> = {
-//         id: '2',
-//         name: 'Incomplete User',
-//         username: 'incompleteuser',
-//         email: 'incompleteuser@example.com',
-//         role: {
-//           id: '2',
-//           name: 'User'
-//         }
-//       };
+    rolesServiceSpy.getRoles.and.returnValue(of(mockRoles));
+    usersServiceSpy.getUserById.and.returnValue(of(mockUser));
+    fixture.detectChanges();
+  });
 
-//       spyOn(usersService, 'createUser').and.returnValue(of({}));
+  it('debería crear el componente', () => {
+    expect(component).toBeTruthy();
+  });
 
-//       component.createUser(user as User); // Pass it explicitly
+  it('debería cargar los roles al inicializar', () => {
+    expect(component.roles).toEqual(mockRoles);
+    expect(rolesServiceSpy.getRoles).toHaveBeenCalled();
+  });
 
-//       expect(usersService.createUser).toHaveBeenCalledWith({
-//         ...user,
-//         password: '' // Make sure password is defined even if not passed
-//       });
-//     });
-//   });
+  it('debería cargar los datos del usuario cuando se proporciona un userId', () => {
+    expect(component.userId).toBe('123');
+    expect(usersServiceSpy.getUserById).toHaveBeenCalledWith('123');
+    expect(component.userForm.value.name).toBe(mockUser.name);
+  });
 
-//   describe('updateUser method', () => {
-//     it('should call updateUser with a valid user object', () => {
-//       const user: User = {
-//         id: '1',
-//         name: 'Updated User',
-//         username: 'updateduser',
-//         email: 'updateduser@example.com',
-//         role: {
-//           id: '1',
-//           name: 'Admin'
-//         },
-//         password: 'newsecurepassword'
-//       };
+  it('debería llamar a createUser al enviar un formulario válido cuando no está editando', (done) => {
+    spyOn(Swal, 'fire').and.callFake(() =>
+      Promise.resolve({
+        isConfirmed: true,
+      } as any)
+    );
 
-//       spyOn(usersService, 'updateUser').and.returnValue(of(user));
+    component.userId = null;
+    component.userForm.setValue({
+      name: 'Nuevo Usuario',
+      username: 'nuevousuario',
+      email: 'nuevousuario@example.com',
+      role: '1',
+      password: 'Password@123',
+      confirmPassword: 'Password@123',
+    });
 
-//       component.updateUser(user);
+    const newUser: User = {
+      id: jasmine.any(String) as unknown as string,
+      name: 'Nuevo Usuario',
+      username: 'nuevousuario',
+      email: 'nuevousuario@example.com',
+      role: { id: '1', name: 'Admin' },
+      password: 'Password@123',
+    };
 
-//       expect(usersService.updateUser).toHaveBeenCalledWith(user.id, user);
-//     });
+    usersServiceSpy.createUser.and.returnValue(of(newUser));
 
-//     it('should handle errors when necessary properties are missing', () => {
-//       const user: Partial<User> = {
-//         id: '1',
-//         name: 'User Without Password',
-//         username: 'userwithoutpassword',
-//         email: 'userwithoutpassword@example.com',
-//         role: {
-//           id: '1',
-//           name: 'Admin'
-//         }
-//       };
+    component.onSubmit();
 
-//       spyOn(usersService, 'updateUser').and.returnValue(of({}));
-
-//       component.updateUser(user as User); // Pass explicitly with missing password
-
-//       expect(usersService.updateUser).toHaveBeenCalledWith({
-//         ...user,
-//         password: '' // Ensure password is properly included
-//       });
-//     });
-//   });
-
-//   describe('loadRoles method', () => {
-//     it('should call loadRoles', () => {
-//       spyOn(component, 'loadRoles').and.callThrough();
-
-//       component.loadRoles();
-
-//       expect(component.loadRoles).toHaveBeenCalled();
-//     });
-//   });
-
-//   describe('Form Validations', () => {
-//     it('should require the "name" control to be filled', () => {
-//       const nameControl = component.userForm.controls['name'];
-//       nameControl.setValue('');
-//       expect(nameControl.valid).toBeFalsy();
-//     });
-
-//     it('should require the "email" control to be filled', () => {
-//       const emailControl = component.userForm.controls['email'];
-//       emailControl.setValue('');
-//       expect(emailControl.valid).toBeFalsy();
-//     });
-
-//     it('should require the password and confirm password to match', () => {
-//       const formGroup = component.fb.group({
-//         password: ['password1'],
-//         confirmPassword: ['password2']
-//       });
-
-//       const result = component.passwordMatchValidator(formGroup);
-
-//       expect(result).toBeFalsy();
-//     });
-//   });
-
-//   describe('getRoleName method', () => {
-//     it('should return the correct role name', () => {
-//       const roleName = component.getRoleName('1');
-//       expect(roleName).toBe('Admin');
-//     });
-//   });
-// });
+    setTimeout(() => {
+      expect(usersServiceSpy.createUser).toHaveBeenCalledWith(jasmine.objectContaining(newUser));
+      expect(routerSpy.navigate).toHaveBeenCalledWith(['/users']);
+      done();
+    });
+  });
+});

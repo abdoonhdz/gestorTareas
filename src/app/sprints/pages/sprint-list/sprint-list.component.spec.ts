@@ -36,54 +36,42 @@ describe('SprintListComponent', () => {
     component = fixture.componentInstance;
   });
 
-  it('should create', () => {
+  it('debería crear el componente', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should load sprints on init', () => {
-    // Arrange
+  it('debería cargar los sprints al inicializar', () => {
     mockSprintsService.getSprints.and.returnValue(of(mockSprints));
 
-    // Act
     component.ngOnInit();
     fixture.detectChanges();
 
-    // Assert
     expect(component.sprints.length).toBe(2);
     expect(component.sprints).toEqual(mockSprints);
   });
 
-  it('should navigate to create sprint page', () => {
-    // Arrange
+  it('debería navegar a la página de crear sprint', () => {
     const routerSpy = spyOn(router, 'navigate');
 
-    // Act
     component.createSprint();
 
-    // Assert
     expect(routerSpy).toHaveBeenCalledWith(['/sprints/new']);
   });
 
-  it('should navigate to sprint detail page', () => {
-    // Arrange
+  it('debería navegar a la página de detalle del sprint', () => {
     const routerSpy = spyOn(router, 'navigate');
     const sprintId = '1';
 
-    // Act
     component.viewSprintDetail(sprintId);
 
-    // Assert
     expect(routerSpy).toHaveBeenCalledWith([`/sprints/${sprintId}`]);
   });
 
-  it('should call loadSprints and set sprints', () => {
-    // Arrange
+  it('debería llamar a loadSprints y establecer los sprints', () => {
     mockSprintsService.getSprints.and.returnValue(of(mockSprints));
 
-    // Act
     component.loadSprints();
 
-    // Assert
     expect(mockSprintsService.getSprints).toHaveBeenCalled();
     expect(component.sprints).toEqual(mockSprints);
   });

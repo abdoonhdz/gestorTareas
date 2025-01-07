@@ -31,7 +31,7 @@ describe('TaskDetailComponent', () => {
   });
 
   describe('ngOnInit', () => {
-    it('should set taskId from route parameter', () => {
+    it('debería establecer taskId desde el parámetro de ruta', () => {
       expect(component.taskId).toBe('mock-task-id');
     });
   });
